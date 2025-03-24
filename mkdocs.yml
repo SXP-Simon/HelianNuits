@@ -55,6 +55,12 @@ theme:
 # 插件配置
 plugins:
   - search  # 搜索插件
+  - blog: # 博客插件
+      blog_toc: true
+      archive_date_format: yyyy 年 MM 月
+      archive_url_date_format: yyyy/MM
+      archive_url_format: "{date}"
+      post_url_date_format: yyyy/MM
   - tags  # 标签插件
   - minify:  # 压缩插件
       minify_html: true
@@ -101,14 +107,23 @@ markdown_extensions:
       slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: lower
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
 
 # 额外配置项
 extra:
   generator: false  # 是否显示生成器
   social:  # 社交媒体
-    - icon: fontawesome/brands/github
+    - icon: simple/github
       link: https://github.com/SXP-Simon
-    - icon: fontawesome/brands/bilibili
+    - icon: simple/bilibili
       link: https://space.bilibili.com/609923881
-    - icon: fontawesome/brands/email
+    - icon: material/email
       link: Nighthelianthus@email.ncu.edu.cn
