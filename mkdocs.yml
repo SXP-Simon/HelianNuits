@@ -1,0 +1,115 @@
+# 项目信息
+site_name: 夜之向日葵  # 项目名称
+site_url: https://localhost:8000/  # 本地开发环境 URL
+site_author: Helian Nuits  # 作者
+site_description: >-  # 项目描述
+    夜之向日葵，此曲为一切不合时宜者而作。
+
+# 代码仓库信息
+repo_name: HelianNuits  # 仓库名称
+repo_url: https://github.com/SXP-Simon/HelianNuits # 仓库地址
+
+# 版权信息
+copyright: Copyright &copy; 2025 ~ now | HelianNuits
+
+hooks:
+  - material/overrides/hooks/hooks.py  # 指向自定义 hooks 文件
+
+# 主题配置
+theme:
+  name: material  # 使用 Material 主题
+  language: zh  # 默认语言
+  logo: assets/HelianNuits.jpg  # 项目 logo
+  favicon: assets/HelianNuits.jpg  # 网站图标
+  features:  # 启用的功能
+    - navigation.tabs  # 导航栏选项卡
+    - navigation.expand  # 默认展开导航栏
+    - search.highlight  # 搜索高亮
+    - toc.follow  # 右侧目录跟踪
+    - content.code.copy  # 复制代码按钮
+    - navigation.sections  # 导航栏的section
+    - navigation.tabs.sticky  # tab始终可见
+    - navigation.top  # 开启顶部导航栏
+    - navigation.tracking  # 导航栏跟踪
+    - search.suggest  # 搜索建议
+  font:
+    text: stzhongsong
+    code: JetBrains Mono
+  palette:  # 主题颜色
+    - media: "(prefers-color-scheme: light)"  # 浅色模式
+      scheme: default
+      primary: white
+      accent: blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"  # 深色模式
+      scheme: slate
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to light mode
+
+
+# 插件配置
+plugins:
+  - search  # 搜索插件
+  - tags  # 标签插件
+  - minify:  # 压缩插件
+      minify_html: true
+  - i18n:  # 多语言插件
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: zh
+          default: true
+          name: 简体中文
+          build: true
+        - locale: en
+          name: English
+          build: true
+          nav_translations:
+             首页: Home
+             关于: About
+             博客: blog/index.md
+
+# 导航配置
+nav:
+  - 首页: index.md
+  - 关于: about.md
+  - 博客: blog/index.md  # 添加博客导航项
+
+# Markdown 扩展
+markdown_extensions:
+  - admonition  # 支持警告框
+  - toc:  # 支持目录
+      permalink: true
+  - pymdownx.superfences  # 支持代码块高亮
+  - pymdownx.tasklist  # 支持任务列表
+  - pymdownx.emoji:  # 支持emoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:  # 代码高亮
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.tabbed:  # 支持标签页
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+
+# 额外配置项
+extra:
+  generator: false  # 是否显示生成器
+  social:  # 社交媒体
+    - icon: fontawesome/brands/github
+      link: https://github.com/SXP-Simon
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/609923881
+    - icon: fontawesome/brands/email
+      link: Nighthelianthus@email.ncu.edu.cn
