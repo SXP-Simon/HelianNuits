@@ -1,19 +1,16 @@
-# Welcome to MkDocs
+# HelianNuits的博客
+## 此曲为一切不合时宜者而做。
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+对于人生的意义……
 
-## Commands
+没有追问的必要，也没有必要为人生不可解明而困惑；
+这个世界，这个宇宙，这片天空，这条河，这条路……
+没有必要为这一切的无法解明而困惑……
+因为人活着这件事，就拥有着连其本身都能包含的深邃…… 
+那和上帝一样大…… 
+和上帝一样重…… 
+那就是美妙的旋律和美妙的话语……
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+人啊，幸福地活下去！
 
-
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+![HelianNuits](assets/HelianNuits.jpg)
