@@ -56,8 +56,7 @@ theme:
 # 插件配置
 plugins:
   - search  # 搜索插件
-  - blog: # 博客插件
-      blog_toc: true
+  - blog:
       archive_date_format: yyyy 年 MM 月
       archive_url_date_format: yyyy/MM
       archive_url_format: "{date}"

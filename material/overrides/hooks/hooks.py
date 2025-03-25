@@ -7,7 +7,7 @@ def on_files(files, config):
     动态生成博客文章列表页面。
     """
     # 获取博客文章目录
-    blog_dir = os.path.join(config['docs_dir'], 'blog')
+    blog_dir = os.path.join(config['docs_dir'], 'blog/posts')
     if not os.path.exists(blog_dir):
         os.makedirs(blog_dir)  # 如果 blog 目录不存在，则创建
 
