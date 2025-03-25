@@ -35,5 +35,7 @@ jobs:
           pip install mkdocs-markdownextradata-plugin
           pip install Pygments
           pip install pymdown-extensions
+          pip install mkdocs-rss-plugin
+          pip install mkdocs-static-i18n
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force

@@ -1,69 +1,107 @@
 # 项目信息
-site_name: 夜之向日葵  # 项目名称
+site_name: 夜之向日葵
 site_url: https://sxp-simon.github.io/HelianNuits/
-site_author: Helian Nuits  # 作者
-site_description: >-  # 项目描述
-    夜之向日葵，此曲为一切不合时宜者而作。
+site_author: Helian Nuits
+site_description: 夜之向日葵，此曲为一切不合时宜者而作。
 
 # 代码仓库信息
-repo_name: HelianNuits  # 仓库名称
-repo_url: https://github.com/SXP-Simon/HelianNuits # 仓库地址
+repo_name: HelianNuits
+repo_url: https://github.com/SXP-Simon/HelianNuits
 
 # 版权信息
 copyright: Copyright &copy; 2025 ~ now | HelianNuits
 
 hooks:
-  - material/overrides/hooks/hooks.py  # 指向自定义 hooks 文件
+  - material/overrides/hooks/hooks.py
 
 # 主题配置
 theme:
-  name: material  # 使用 Material 主题
-  language: zh  # 默认语言
-  logo: assets/HelianNuits.jpg  # 项目 logo
-  favicon: assets/HelianNuits.jpg  # 网站图标
+  name: material
+  language: zh
+  logo: assets/HelianNuits.jpg
+  favicon: assets/HelianNuits.jpg
   features:
-    - navigation.tabs  # 导航栏选项卡
-    - navigation.expand  # 默认展开导航栏
-    - navigation.indexes  # 索引按钮可以直接触发文件
-    - navigation.instant  # 瞬间加载，但需注意多语言切换时可能导致跳回首页
-    - navigation.tabs.sticky  # tab始终可见
-    - navigation.sections  # 导航栏的section
-    - navigation.top  # 开启顶部导航栏
-    - navigation.tracking  # 导航栏跟踪
-    - search.suggest  # 搜索建议
-    - search.highlight  # 搜索高亮
-    - content.code.copy  # 复制代码按钮
-  font:
-    text: stzhongsong
-    code: JetBrains Mono
-  palette:  # 主题颜色
-    - media: "(prefers-color-scheme: light)"  # 浅色模式
+    - announce.dismiss
+    - content.code.copy
+    - content.code.annotate
+    - content.tooltips
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: white
-      accent: blue
+      accent: indigo
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"  # 深色模式
+    - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: blue
+      accent: indigo
       toggle:
         icon: material/toggle-switch-off
-        name: Switch to light mode
-
+        name: Switch to system preference
+  font:
+    text: stzhongsong
+    code: JetBrains Mono
+  icon:
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+    tag:
+      default-tag: fontawesome/solid/tag
 
 # 插件配置
 plugins:
-  - search  # 搜索插件
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - blog:
       archive_date_format: yyyy 年 MM 月
       archive_url_date_format: yyyy/MM
       archive_url_format: "{date}"
       post_url_date_format: yyyy/MM
-  - tags  # 标签插件
-  - minify:  # 压缩插件
+  - tags
+  - rss:
+      match_path: blog/posts/.*
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
+  - minify:
       minify_html: true
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: zh
+          name: 简体中文
+          build: true
+
 # 导航配置
 nav:
   - 首页: index.md
@@ -73,19 +111,19 @@ nav:
 
 # Markdown 扩展
 markdown_extensions:
-  - admonition  # 支持警告框
-  - toc:  # 支持目录
+  - admonition
+  - toc:
       permalink: true
-  - pymdownx.superfences  # 支持代码块高亮
-  - pymdownx.tasklist  # 支持任务列表
-  - pymdownx.emoji:  # 支持emoji
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.emoji:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
       emoji_index: !!python/name:material.extensions.emoji.twemoji
-  - pymdownx.highlight:  # 代码高亮
+  - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.tabbed:  # 支持标签页
+  - pymdownx.tabbed:
       alternate_style: true
       combine_header_slug: true
       slugify: !!python/object/apply:pymdownx.slugs.slugify
@@ -100,11 +138,10 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
-
 # 额外配置项
 extra:
-  generator: false  # 是否显示生成器
-  social:  # 社交媒体
+  generator: false
+  social:
     - icon: simple/github
       link: https://github.com/SXP-Simon
     - icon: simple/bilibili
