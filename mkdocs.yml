@@ -85,7 +85,8 @@ plugins:
 nav:
   - 首页: index.md
   - 关于: about.md
-  - 博客: blog/index.md  # 添加博客导航项
+  - 博客:
+     - blog/index.md  # 添加博客导航项
 
 # Markdown 扩展
 markdown_extensions:
