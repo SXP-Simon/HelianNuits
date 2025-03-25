@@ -21,17 +21,18 @@ theme:
   language: zh  # 默认语言
   logo: assets/HelianNuits.jpg  # 项目 logo
   favicon: assets/HelianNuits.jpg  # 网站图标
-  features:  # 启用的功能
+  features:
     - navigation.tabs  # 导航栏选项卡
     - navigation.expand  # 默认展开导航栏
-    - search.highlight  # 搜索高亮
-    - toc.follow  # 右侧目录跟踪
-    - content.code.copy  # 复制代码按钮
-    - navigation.sections  # 导航栏的section
+    - navigation.indexes  # 索引按钮可以直接触发文件
+    - navigation.instant  # 瞬间加载，但需注意多语言切换时可能导致跳回首页
     - navigation.tabs.sticky  # tab始终可见
+    - navigation.sections  # 导航栏的section
     - navigation.top  # 开启顶部导航栏
     - navigation.tracking  # 导航栏跟踪
     - search.suggest  # 搜索建议
+    - search.highlight  # 搜索高亮
+    - content.code.copy  # 复制代码按钮
   font:
     text: stzhongsong
     code: JetBrains Mono
