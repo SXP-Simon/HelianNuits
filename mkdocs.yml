@@ -66,10 +66,6 @@ plugins:
   - minify:  # 压缩插件
       minify_html: true
   - i18n:  # 多语言插件
-      docs_structure: suffix
-      fallback_to_default: true
-      reconfigure_material: true
-      reconfigure_search: true
       default_language: zh
       languages:
         zh:
