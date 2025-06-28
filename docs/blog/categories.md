@@ -17,7 +17,7 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
-    <a href="posts/四月是你的谎言/">四月是你的谎言</a>
+    <a href="/HelianNuits/blog/posts/四月是你的谎言/">四月是你的谎言</a>
   </h4>
   <div class="post-meta">
     <span class="post-date">📅 2025年01月19日</span>
@@ -32,7 +32,7 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
-    <a href="posts/近月2官中来袭/">近月少女的礼仪2官中来袭</a>
+    <a href="/HelianNuits/blog/posts/近月2官中来袭/">近月少女的礼仪2官中来袭</a>
   </h4>
   <div class="post-meta">
     <span class="post-date">📅 2025年01月18日</span>
@@ -56,7 +56,7 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
-    <a href="posts/sample_cn/">Lorem ipsum</a>
+    <a href="/HelianNuits/blog/posts/sample_cn/">Lorem ipsum</a>
   </h4>
   <div class="post-meta">
     <span class="post-date">📅 2025年01月20日</span>
@@ -71,7 +71,7 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
-    <a href="posts/demo/">demo</a>
+    <a href="/HelianNuits/blog/posts/demo/">demo</a>
   </h4>
   <div class="post-meta">
     <span class="post-date">📅 2025年01月17日</span>

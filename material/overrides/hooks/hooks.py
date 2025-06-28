@@ -11,7 +11,8 @@ slugify = lambda s: re.sub(r'[^\w\u4e00-\u9fa5-]+', '-', s).strip('-').lower()
 def get_post_url(post):
     filename = post['filename']
     name = os.path.splitext(filename)[0]
-    return f"posts/{name}/"
+    # 使用绝对路径，确保链接始终指向正确的地址
+    return f"/HelianNuits/blog/posts/{name}/"
 
 def on_files(files, config):
     """在文件处理时自动生成博客页面"""
