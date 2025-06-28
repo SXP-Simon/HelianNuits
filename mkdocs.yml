@@ -111,21 +111,9 @@ plugins:
       archive_url_format: "{date}"
       post_url_date_format: yyyy/MM
       blog_toc: true
-      blog_categories: true
-      blog_tags: true
-      blog_nav: true
-      blog_archive: true
-      blog_archive_name: 归档
-      blog_categories_name: 分类
-      blog_tags_name: 标签
-      blog_nav_name: 文章
-      blog_nav_sort_by: date
-      blog_nav_sort_reverse: true
-      blog_name: 博客
-      blog_description: 欢迎来到我的博客！这里记录着我的技术分享、生活感悟和各种有趣的内容。
   - tags
   - rss:
-      match_path: blog/posts/.*
+      match_path: blog/.*\.md$
       date_from_meta:
         as_creation: date
       categories:
@@ -134,10 +122,6 @@ plugins:
   - minify:
       minify_html: true
   - i18n:
-      docs_structure: suffix
-      fallback_to_default: true
-      reconfigure_material: true
-      reconfigure_search: true
       default_language: zh
       languages:
         en: English
@@ -148,9 +132,6 @@ nav:
   - 首页: index.md
   - 关于: about.md
   - 博客: blog/
-  - 分类: blog/categories/
-  - 标签: blog/tags/
-  - 归档: blog/archive/
 
 # Markdown 扩展
 markdown_extensions:
@@ -197,9 +178,6 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.snippets:
-      auto_append:
-        - includes/mkdocs.md
   - pymdownx.striphtml:
       strip_comments: true
       strip_js_on_attributes: true
@@ -223,37 +201,3 @@ extra:
       link: https://space.bilibili.com/609923881
     - icon: material/email
       link: Nighthelianthus@email.ncu.edu.cn
-  analytics:
-    provider: google
-    property: !ENV GOOGLE_ANALYTICS_KEY
-  version:
-    provider: mike
-  consent:
-    title: Cookie consent
-    description: >- 
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they search for. With your consent, you're helping us to make
-      our documentation better.
-  palette:
-    - media: "(prefers-color-scheme)"
-      scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
