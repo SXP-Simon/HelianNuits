@@ -18,22 +18,10 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v3
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
       - name: Install dependencies
         run: |
-          pip install mkdocs-material
-          pip install mkdocs-minify-plugin
-          pip install mkdocs-i18n
-          pip install mkdocs-markdownextradata-plugin
-          pip install Pygments
-          pip install pymdown-extensions
-          pip install mkdocs-rss-plugin
-          pip install mkdocs-static-i18n
+          pip install -r requirements.txt
+      - name: Build site
+        run: mkdocs build --strict
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force

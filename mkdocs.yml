@@ -103,6 +103,11 @@ theme:
 
 # 插件配置
 plugins:
+  - rss:
+      match_path: blog/posts/.*\.md$
+      categories:
+        - categories
+        - tags
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - blog:
@@ -112,26 +117,25 @@ plugins:
       post_url_date_format: yyyy/MM
       blog_toc: true
   - tags
-  - rss:
-      match_path: blog/.*\.md$
-      date_from_meta:
-        as_creation: date
-      categories:
-        - categories
-        - tags
   - minify:
       minify_html: true
   - i18n:
-      default_language: zh
       languages:
-        en: English
-        zh: 简体中文
+        - locale: zh   # attention
+          name: 简体中文
+          build: true
+          default: true
+        - locale: en
+          name: English
+          build: true  # attention
 
 # 导航配置
 nav:
   - 首页: index.md
   - 关于: about.md
-  - 博客: blog/
+  - 博客: blog/index.md
+  - 分类: blog/categories.md
+  - 归档: blog/archive.md
 
 # Markdown 扩展
 markdown_extensions:

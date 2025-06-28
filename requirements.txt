@@ -1,0 +1,8 @@
+mkdocs-material
+mkdocs-minify-plugin
+mkdocs-static-i18n
+mkdocs-markdownextradata-plugin
+Pygments
+pymdown-extensions
+mkdocs-rss-plugin
+mkdocs-blog-plugin 

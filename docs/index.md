@@ -47,7 +47,7 @@ description: 此曲为一切不合时宜者而作
 
 ### 🎵 最新文章
 
-[:octicons-arrow-right-24: 查看所有文章](blog/)
+[:octicons-arrow-right-24: 查看所有文章](blog/index.md)
 
 </div>
 
@@ -55,7 +55,7 @@ description: 此曲为一切不合时宜者而作
 
 ### 🏷️ 分类浏览
 
-[:octicons-arrow-right-24: 按分类浏览](blog/categories/)
+[:octicons-arrow-right-24: 按分类浏览](blog/categories.md)
 
 </div>
 
@@ -63,21 +63,25 @@ description: 此曲为一切不合时宜者而作
 
 ### 📅 时间归档
 
-[:octicons-arrow-right-24: 查看归档](blog/archive/)
+[:octicons-arrow-right-24: 查看归档](blog/archive.md)
 
 </div>
-
-</div>
-
-<div align="center">
-
-![HelianNuits](assets/HelianNuits.jpg){ width="300" }
-
-*夜之向日葵 - 此曲为一切不合时宜者而作*
 
 </div>
 
 ---
+
+<div style="display: flex; justify-content: center; margin: 2em 0;">
+  <div class="card" style="max-width: 400px; padding: 2em 1em; background: linear-gradient(135deg, #f8fafc 60%, #e0e7ff 100%); border-radius: 18px; box-shadow: 0 4px 24px rgba(102,126,234,0.10); display: flex; flex-direction: column; align-items: center;">
+    <img src="assets/HelianNuits.jpg" width="220" alt="HelianNuits" style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.13);margin-bottom:1.2em;" />
+    <div style="font-size: 1.15em; color: #444; font-weight: 500; text-align: center; margin-top: 0.5em;">
+      夜之向日葵<br>
+      <span style="display:inline-block; margin-top:0.5em; color:#764ba2; font-style:italic; font-size:1em; font-weight:400;">
+        此曲为一切不合时宜者而作
+      </span>
+    </div>
+  </div>
+</div>
 
 <div class="grid" markdown>
 
@@ -89,12 +93,14 @@ description: 此曲为一切不合时宜者而作
 
 </div>
 
-<div class="card" markdown>
-
-### :material-bilibili: Bilibili
-
-[:octicons-arrow-right-24: 关注我](https://space.bilibili.com/609923881)
-
+<div class="card" style="display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 1.5em 0;">
+  <div style="display: flex; align-items: center; gap: 0.7em; margin-bottom: 0.7em;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/bilibili.svg" alt="Bilibili" width="40" style="filter: grayscale(1) brightness(0.2);" />
+    <span style="font-size: 1.4em; font-weight: bold; letter-spacing: 1px;">Bilibili</span>
+  </div>
+  <a href="https://space.bilibili.com/609923881" target="_blank" style="display: inline-block; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 0.5em 1.5em; border-radius: 20px; font-size: 1.1em; font-weight: 500; text-decoration: none; box-shadow: 0 2px 8px rgba(102,126,234,0.10); transition: background 0.3s;">
+    关注我
+  </a>
 </div>
 
 <div class="card" markdown>

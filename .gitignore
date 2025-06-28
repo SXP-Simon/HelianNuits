@@ -1,1 +1,59 @@
+# Python 虚拟环境
+.venv/
+venv/
+env/
+
+# MkDocs 构建输出
+site/
+.cache/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# IDE 配置文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.temp
+.tmp/
+
+# 备份文件
+*.bak
+*.backup
+*~
+
+# 本地配置文件
+.env
+.env.local
+.env.*.local
+
+# 测试覆盖率
+.coverage
+htmlcov/
+.pytest_cache/
+
+# 原有的自定义规则
 /material/overrides/hooks/backup
