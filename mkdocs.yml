@@ -78,6 +78,17 @@ plugins:
       archive_url_date_format: yyyy/MM
       archive_url_format: "{date}"
       post_url_date_format: yyyy/MM
+      blog_toc: true
+      blog_categories: true
+      blog_tags: true
+      blog_nav: true
+      blog_archive: true
+      blog_archive_name: 归档
+      blog_categories_name: 分类
+      blog_tags_name: 标签
+      blog_nav_name: 文章
+      blog_nav_sort_by: date
+      blog_nav_sort_reverse: true
   - tags
   - rss:
       match_path: blog/posts/.*
@@ -93,21 +104,20 @@ plugins:
       fallback_to_default: true
       reconfigure_material: true
       reconfigure_search: true
+      default_language: zh
       languages:
-        - locale: en
-          default: true
-          name: English
-          build: true
-        - locale: zh
-          name: 简体中文
-          build: true
+        en: English
+        zh: 简体中文
 
 # 导航配置
 nav:
   - 首页: index.md
   - 关于: about.md
   - 博客:
-     - blog/index.md
+     - 文章: blog/
+     - 分类: blog/categories/
+     - 标签: blog/tags/
+     - 归档: blog/archive/
 
 # Markdown 扩展
 markdown_extensions:

@@ -3,11 +3,17 @@ title: Lorem ipsum
 author: SprInec
 references: typora-theme-Jinxiu
 description: 这个 block 块是 YAML front matters
+date: 2025-01-20
+categories:
+  - 技术分享
+tags:
+  - Markdown
+  - 示例
 ---
 
 # Lorem ipsum
 
-在[出版](https://www.wikiwand.com/en/Publishing)和[平面设计](https://www.wikiwand.com/en/Graphic_design)中，**lorem ipsum**（源自拉丁语 *dolorem ipsum*，翻译为“痛苦本身”）是一个[填充文本](https://www.wikiwand.com/en/Filler_text)，通常用于演示文档或视觉呈现的图形元素[^1]
+在[出版](https://www.wikiwand.com/en/Publishing)和[平面设计](https://www.wikiwand.com/en/Graphic_design)中，**lorem ipsum**（源自拉丁语 *dolorem ipsum*，翻译为"痛苦本身"）是一个[填充文本](https://www.wikiwand.com/en/Filler_text)，通常用于演示文档或视觉呈现的图形元素[^1]
 
 ## 样例文本
 
