@@ -4,4 +4,4 @@ mkdocs-markdownextradata-plugin
 Pygments
 pymdown-extensions
 mkdocs-rss-plugin
-mkdocs-tags-plugin
+mkdocs-plugin-tags
