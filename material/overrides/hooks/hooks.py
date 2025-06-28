@@ -9,9 +9,9 @@ from collections import defaultdict
 slugify = lambda s: re.sub(r'[^\w\u4e00-\u9fa5-]+', '-', s).strip('-').lower()
 
 def get_post_url(post):
-    date = post['date']
-    slug = slugify(post['title'])
-    return f"/blog/{date.year}/{date.month:02d}/{slug}/"
+    filename = post['filename']
+    name = os.path.splitext(filename)[0]
+    return f"posts/{name}/"
 
 def on_files(files, config):
     """在文件处理时自动生成博客页面"""
@@ -42,7 +42,7 @@ def generate_blog_pages(config):
     posts.sort(key=lambda x: x['date'], reverse=True)
     
     # 生成最新文章页面
-    generate_latest_posts_page(docs_dir, posts)
+    generate_latest_posts_page(docs_dir, posts, config)
     
     # 生成时间归档页面
     generate_archive_page(docs_dir, posts)
@@ -106,7 +106,7 @@ def extract_post_info(post_file):
         print(f"处理文章 {post_file} 时出错: {e}")
         return None
 
-def generate_latest_posts_page(docs_dir, posts):
+def generate_latest_posts_page(docs_dir, posts, config):
     """生成最新文章页面"""
     blog_dir = docs_dir / 'blog'
     blog_dir.mkdir(exist_ok=True)
@@ -141,6 +141,11 @@ def generate_latest_posts_page(docs_dir, posts):
 </div>
 '''
     
+    site_url = config.get('site_url', '/')
+    if site_url and not site_url.endswith('/'):
+        site_url += '/'
+    rss_url = f"{site_url}feed_rss_created.xml"
+    
     # 生成完整的index.md内容
     index_content = f'''---
 title: 博客文章
@@ -163,7 +168,7 @@ description: 最新博客文章列表
 
 - [:octicons-archive-24: 时间归档](archive.md) - 按时间浏览所有文章
 - [:octicons-tag-24: 分类浏览](categories.md) - 按分类浏览文章
-- [:octicons-rss-24: RSS订阅](../feed_rss_created.xml) - 订阅最新文章
+- [:octicons-rss-24: RSS订阅]({rss_url}) - 订阅最新文章
 
 </div>
 '''

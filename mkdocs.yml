@@ -110,24 +110,9 @@ plugins:
         - tags
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-  - blog:
-      archive_date_format: yyyy 年 MM 月
-      archive_url_date_format: yyyy/MM
-      archive_url_format: "{date}"
-      post_url_date_format: yyyy/MM
-      blog_toc: true
   - tags
   - minify:
       minify_html: true
-  - i18n:
-      languages:
-        - locale: zh   # attention
-          name: 简体中文
-          build: true
-          default: true
-        - locale: en
-          name: English
-          build: true  # attention
 
 # 导航配置
 nav:
@@ -136,6 +121,9 @@ nav:
   - 博客: blog/index.md
   - 分类: blog/categories.md
   - 归档: blog/archive.md
+
+not_in_nav: |
+  /blog/posts/
 
 # Markdown 扩展
 markdown_extensions:

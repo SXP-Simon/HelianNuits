@@ -11,7 +11,7 @@ description: 最新博客文章列表
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
-    <a href="/blog/2025/01/lorem-ipsum/">Lorem ipsum</a>
+    <a href="posts/sample_cn/">Lorem ipsum</a>
   </h3>
   <div class="post-meta">
     <span class="post-date">📅 2025年01月20日</span>
@@ -23,14 +23,14 @@ description: 最新博客文章列表
 </div>
 <div class="post-footer">
   <span class="post-author">👤 SprInec</span>
-  <a href="/blog/2025/01/lorem-ipsum/" class="read-more">阅读全文 →</a>
+  <a href="posts/sample_cn/" class="read-more">阅读全文 →</a>
 </div>
 </div>
 
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
-    <a href="/blog/2025/01/四月是你的谎言/">四月是你的谎言</a>
+    <a href="posts/四月是你的谎言/">四月是你的谎言</a>
   </h3>
   <div class="post-meta">
     <span class="post-date">📅 2025年01月19日</span>
@@ -42,14 +42,14 @@ description: 最新博客文章列表
 </div>
 <div class="post-footer">
   <span class="post-author">👤 Helian Nuits</span>
-  <a href="/blog/2025/01/四月是你的谎言/" class="read-more">阅读全文 →</a>
+  <a href="posts/四月是你的谎言/" class="read-more">阅读全文 →</a>
 </div>
 </div>
 
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
-    <a href="/blog/2025/01/近月少女的礼仪2官中来袭/">近月少女的礼仪2官中来袭</a>
+    <a href="posts/近月2官中来袭/">近月少女的礼仪2官中来袭</a>
   </h3>
   <div class="post-meta">
     <span class="post-date">📅 2025年01月18日</span>
@@ -61,14 +61,14 @@ description: 最新博客文章列表
 </div>
 <div class="post-footer">
   <span class="post-author">👤 Helian Nuits</span>
-  <a href="/blog/2025/01/近月少女的礼仪2官中来袭/" class="read-more">阅读全文 →</a>
+  <a href="posts/近月2官中来袭/" class="read-more">阅读全文 →</a>
 </div>
 </div>
 
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
-    <a href="/blog/2025/01/demo/">demo</a>
+    <a href="posts/demo/">demo</a>
   </h3>
   <div class="post-meta">
     <span class="post-date">📅 2025年01月17日</span>
@@ -80,7 +80,7 @@ description: 最新博客文章列表
 </div>
 <div class="post-footer">
   <span class="post-author">👤 Helian Nuits</span>
-  <a href="/blog/2025/01/demo/" class="read-more">阅读全文 →</a>
+  <a href="posts/demo/" class="read-more">阅读全文 →</a>
 </div>
 </div>
 
@@ -95,6 +95,6 @@ description: 最新博客文章列表
 
 - [:octicons-archive-24: 时间归档](archive.md) - 按时间浏览所有文章
 - [:octicons-tag-24: 分类浏览](categories.md) - 按分类浏览文章
-- [:octicons-rss-24: RSS订阅](../feed_rss_created.xml) - 订阅最新文章
+- [:octicons-rss-24: RSS订阅](http://127.0.0.1:8000/HelianNuits/feed_rss_created.xml) - 订阅最新文章
 
 </div>
