@@ -1,5 +1,5 @@
 mkdocs-material
-mkdocs-minify-plugin
+mkdocs-minify-plugin>=0.8.0
 mkdocs-markdownextradata-plugin
 Pygments
 pymdown-extensions
