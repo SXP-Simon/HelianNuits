@@ -24,7 +24,10 @@ theme:
     - announce.dismiss
     - content.code.copy
     - content.code.annotate
+    - content.code.select
     - content.tooltips
+    - content.action.edit
+    - content.action.view
     - navigation.expand
     - navigation.footer
     - navigation.indexes
@@ -37,28 +40,32 @@ theme:
     - navigation.tracking
     - search.highlight
     - search.suggest
+    - search.share
     - toc.follow
+    - toc.integrate
+    - header.autohide
+    - footer
   palette:
     - media: "(prefers-color-scheme)"
       scheme: slate
-      primary: black
+      primary: indigo
       accent: indigo
       toggle:
-        icon: material/link
+        icon: material/brightness-auto
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: white
+      primary: indigo
       accent: indigo
       toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
+      primary: indigo
       accent: indigo
       toggle:
-        icon: material/toggle-switch-off
+        icon: material/brightness-4
         name: Switch to system preference
   font:
     text: stzhongsong
@@ -68,6 +75,31 @@ theme:
     next: fontawesome/solid/angle-right
     tag:
       default-tag: fontawesome/solid/tag
+    edit: fontawesome/solid/pen-to-square
+    view: fontawesome/solid/eye
+    repo: fontawesome/brands/github
+    search: fontawesome/solid/magnifying-glass
+    top: fontawesome/solid/chevron-up
+    menu: fontawesome/solid/bars
+    link: fontawesome/solid/link
+    download: fontawesome/solid/download
+    check: fontawesome/solid/check
+    warning: fontawesome/solid/exclamation-triangle
+    info: fontawesome/solid/info-circle
+    note: fontawesome/solid/sticky-note
+    tip: fontawesome/solid/lightbulb
+    bug: fontawesome/solid/bug
+    example: fontawesome/solid/flask
+    quote: fontawesome/solid/quote-left
+    abstract: fontawesome/solid/list-ul
+    success: fontawesome/solid/check-circle
+    failure: fontawesome/solid/times-circle
+    question: fontawesome/solid/question-circle
+    danger: fontawesome/solid/skull-crossbones
+    error: fontawesome/solid/times-octagon
+    help: fontawesome/solid/circle-question
+    important: fontawesome/solid/exclamation-circle
+    caution: fontawesome/solid/triangle-exclamation
 
 # 插件配置
 plugins:
@@ -89,6 +121,8 @@ plugins:
       blog_nav_name: 文章
       blog_nav_sort_by: date
       blog_nav_sort_reverse: true
+      blog_name: 博客
+      blog_description: 欢迎来到我的博客！这里记录着我的技术分享、生活感悟和各种有趣的内容。
   - tags
   - rss:
       match_path: blog/posts/.*
@@ -113,19 +147,28 @@ plugins:
 nav:
   - 首页: index.md
   - 关于: about.md
-  - 博客:
-     - 文章: blog/
-     - 分类: blog/categories/
-     - 标签: blog/tags/
-     - 归档: blog/archive/
+  - 博客: blog/
+  - 分类: blog/categories/
+  - 标签: blog/tags/
+  - 归档: blog/archive/
 
 # Markdown 扩展
 markdown_extensions:
   - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
   - toc:
       permalink: true
-  - pymdownx.superfences
-  - pymdownx.tasklist
+      title: 目录
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.emoji:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -133,6 +176,7 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+      use_pygments: true
   - pymdownx.tabbed:
       alternate_style: true
       combine_header_slug: true
@@ -142,11 +186,32 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.escapeall:
+      hardbreak: true
+      nbsp: true
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.striphtml:
+      strip_comments: true
+      strip_js_on_attributes: true
+  - pymdownx.tilde
 
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
 
 # 额外配置项
 extra:
@@ -158,3 +223,37 @@ extra:
       link: https://space.bilibili.com/609923881
     - icon: material/email
       link: Nighthelianthus@email.ncu.edu.cn
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+  version:
+    provider: mike
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they search for. With your consent, you're helping us to make
+      our documentation better.
+  palette:
+    - media: "(prefers-color-scheme)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
