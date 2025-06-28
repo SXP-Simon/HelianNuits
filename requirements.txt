@@ -4,3 +4,4 @@ mkdocs-minify-plugin==0.8.0
 Pygments==2.19.2
 pymdown-extensions==10.16
 mkdocs-markdownextradata-plugin==0.2.6
+ruamel.yaml>=0.17.0

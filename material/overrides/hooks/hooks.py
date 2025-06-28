@@ -4,6 +4,14 @@ import yaml
 from datetime import datetime
 from pathlib import Path
 from collections import defaultdict
+from ruamel.yaml import YAML
+
+# 获取当前 hooks.py 文件的绝对路径
+HOOKS_DIR = os.path.dirname(os.path.abspath(__file__))
+# 项目根目录（hooks.py 在 material/overrides/hooks/ 下，向上三级）
+PROJECT_ROOT = os.path.abspath(os.path.join(HOOKS_DIR, '..', '..', '..'))
+MKDOCS_YML = os.path.join(PROJECT_ROOT, 'mkdocs.yml')
+POSTS_DIR = os.path.join(PROJECT_ROOT, 'docs', 'blog', 'posts')
 
 # 生成slug
 slugify = lambda s: re.sub(r'[^\w\u4e00-\u9fa5-]+', '-', s).strip('-').lower()
@@ -18,6 +26,7 @@ def on_files(files, config):
     """在文件处理时自动生成博客页面"""
     print("=== 开始执行on_files钩子 ===")
     generate_blog_pages(config)
+    update_mkdocs_nav()
     print("=== on_files钩子执行完成 ===")
     return files
 
@@ -336,3 +345,36 @@ def on_post_build(config):
     print("=== 开始执行on_post_build钩子 ===")
     generate_blog_pages(config)
     print("=== on_post_build钩子执行完成 ===")
+
+# 生成博客文章列表
+def get_post_nav():
+    post_nav = []
+    for fname in sorted(os.listdir(POSTS_DIR)):
+        if fname.endswith('.md'):
+            name = os.path.splitext(fname)[0]
+            post_nav.append({name: f'blog/posts/{fname}'})
+    return post_nav
+
+def update_mkdocs_nav():
+    yaml = YAML()
+    yaml.preserve_quotes = True
+    with open(MKDOCS_YML, 'r', encoding='utf-8') as f:
+        data = yaml.load(f)
+
+    nav = data.get('nav', [])
+    new_blog_nav = [
+        {'博客首页': 'blog/index.md'},
+        {'文章列表': get_post_nav()}
+    ]
+    found = False
+    for i, item in enumerate(nav):
+        if isinstance(item, dict) and '博客' in item:
+            nav[i]['博客'] = new_blog_nav
+            found = True
+            break
+    if not found:
+        nav.append({'博客': new_blog_nav})
+    data['nav'] = nav
+
+    with open(MKDOCS_YML, 'w', encoding='utf-8') as f:
+        yaml.dump(data, f)

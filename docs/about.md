@@ -96,6 +96,14 @@ description: 了解 Helian Nuits
 
 </div>
 
+<div class="card" markdown>
+
+### :simple-zhihu: 知乎
+
+[:octicons-arrow-right-24: 访问知乎](https://www.zhihu.com/people/29-79-68-57-27)
+
+</div>
+
 </div>
 
 <div class="grid" markdown>

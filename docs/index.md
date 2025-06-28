@@ -67,6 +67,14 @@ description: 此曲为一切不合时宜者而作
 
 </div>
 
+<div class="card" markdown>
+
+### 📅 主题演示
+
+[:octicons-arrow-right-24: 查看演示](theme-demo.md)
+
+</div>
+
 </div>
 
 ---
@@ -108,6 +116,14 @@ description: 此曲为一切不合时宜者而作
 ### :material-email: 联系
 
 [:octicons-arrow-right-24: 发送邮件](mailto:Nighthelianthus@email.ncu.edu.cn)
+
+</div>
+
+<div class="card" markdown>
+
+### :simple-zhihu: 知乎
+
+[:octicons-arrow-right-24: 访问知乎](https://www.zhihu.com/people/29-79-68-57-27)
 
 </div>
 

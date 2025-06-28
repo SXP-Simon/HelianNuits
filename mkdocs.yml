@@ -12,7 +12,7 @@ repo_url: https://github.com/SXP-Simon/HelianNuits
 copyright: Copyright &copy; 2025 ~ now | HelianNuits
 
 hooks:
-  - material/overrides/hooks/hooks.py
+- material/overrides/hooks/hooks.py
 
 # 主题配置
 theme:
@@ -21,52 +21,52 @@ theme:
   logo: assets/HelianNuits.jpg
   favicon: assets/HelianNuits.jpg
   features:
-    - announce.dismiss
-    - content.code.copy
-    - content.code.annotate
-    - content.code.select
-    - content.tooltips
-    - content.action.edit
-    - content.action.view
-    - navigation.expand
-    - navigation.footer
-    - navigation.indexes
-    - navigation.instant.prefetch
-    - navigation.instant.progress
-    - navigation.sections
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.top
-    - navigation.tracking
-    - search.highlight
-    - search.suggest
-    - search.share
-    - toc.follow
-    - toc.integrate
-    - header.autohide
-    - footer
+  - announce.dismiss
+  - content.code.copy
+  - content.code.annotate
+  - content.code.select
+  - content.tooltips
+  - content.action.edit
+  - content.action.view
+  - navigation.expand
+  - navigation.footer
+  - navigation.indexes
+  - navigation.instant.prefetch
+  - navigation.instant.progress
+  - navigation.sections
+  - navigation.tabs
+  - navigation.tabs.sticky
+  - navigation.top
+  - navigation.tracking
+  - search.highlight
+  - search.suggest
+  - search.share
+  - toc.follow
+  - toc.integrate
+  - header.autohide
+  - footer
   palette:
-    - media: "(prefers-color-scheme)"
-      scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
+  - media: "(prefers-color-scheme)"
+    scheme: slate
+    primary: orange
+    accent: deep orange
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: orange
+    accent: deep orange
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: orange
+    accent: deep orange
+    toggle:
+      icon: material/brightness-4
+      name: Switch to system preference
   font:
     text: stzhongsong
     code: JetBrains Mono
@@ -103,92 +103,103 @@ theme:
 
 # 插件配置
 plugins:
-  - rss:
-      match_path: blog/posts/.*\.md$
-      categories:
-        - categories
-        - tags
-  - search:
-      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-  - minify:
-      minify_html: true
+- rss:
+    match_path: blog/posts/.*\.md$
+    categories:
+    - categories
+    - tags
+- search:
+    separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+- minify:
+    minify_html: true
 
 # 导航配置
 nav:
-  - 首页: index.md
-  - 关于: about.md
-  - 博客: blog/index.md
-  - 分类: blog/categories.md
-  - 归档: blog/archive.md
+- 首页: index.md
+- 关于: about.md
+- 主题演示: theme-demo.md
+- 博客:
+  - 博客首页: blog/index.md
+  - 文章列表:
+    - demo: blog/posts/demo.md
+    - sample_cn: blog/posts/sample_cn.md
+    - 四月是你的谎言: blog/posts/四月是你的谎言.md
+    - 近月2官中来袭: blog/posts/近月2官中来袭.md
+- 分类: blog/categories.md
+- 归档: blog/archive.md
 
-not_in_nav: |
-  /blog/posts/
+# not_in_nav: |
+#   /blog/posts/
 
 # Markdown 扩展
 markdown_extensions:
-  - admonition
-  - attr_list
-  - def_list
-  - footnotes
-  - md_in_html
-  - toc:
-      permalink: true
-      title: 目录
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-      use_pygments: true
-  - pymdownx.tabbed:
-      alternate_style: true
-      combine_header_slug: true
-      slugify: !!python/object/apply:pymdownx.slugs.slugify
-        kwds:
-          case: lower
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.caret
-  - pymdownx.details
-  - pymdownx.escapeall:
-      hardbreak: true
-      nbsp: true
-  - pymdownx.keys
-  - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.striphtml:
-      strip_comments: true
-      strip_js_on_attributes: true
-  - pymdownx.tilde
+- admonition
+- attr_list
+- def_list
+- footnotes
+- md_in_html
+- toc:
+    permalink: true
+    title: 目录
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format
+- pymdownx.tasklist:
+    custom_checkbox: true
+- pymdownx.emoji:
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+- pymdownx.highlight:
+    anchor_linenums: true
+    line_spans: __span
+    pygments_lang_class: true
+    use_pygments: true
+- pymdownx.tabbed:
+    alternate_style: true
+    combine_header_slug: true
+    slugify: !!python/object/apply:pymdownx.slugs.slugify
+      kwds:
+        case: lower
+- pymdownx.inlinehilite
+- pymdownx.snippets
+- pymdownx.superfences
+- pymdownx.arithmatex:
+    generic: true
+- pymdownx.caret
+- pymdownx.details
+- pymdownx.escapeall:
+    hardbreak: true
+    nbsp: true
+- pymdownx.keys
+- pymdownx.magiclink
+- pymdownx.mark
+- pymdownx.smartsymbols
+- pymdownx.striphtml:
+    strip_comments: true
+    strip_js_on_attributes: true
+- pymdownx.tilde
 
 extra_javascript:
-  - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+- javascripts/mathjax.js
+- javascripts/sunflower-effects.js
+- https://polyfill.io/v3/polyfill.min.js?features=es6
+- https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
-  - stylesheets/extra.css
+- stylesheets/extra.css
+- stylesheets/sunflower-theme.css
 
 # 额外配置项
 extra:
   generator: false
   social:
-    - icon: simple/github
-      link: https://github.com/SXP-Simon
-    - icon: simple/bilibili
-      link: https://space.bilibili.com/609923881
-    - icon: material/email
-      link: Nighthelianthus@email.ncu.edu.cn
+  - icon: simple/github
+    link: https://github.com/SXP-Simon
+  - icon: simple/bilibili
+    link: https://space.bilibili.com/609923881
+  - icon: material/email
+    link: Nighthelianthus@email.ncu.edu.cn
+  - icon: simple/zhihu
+    link: https://www.zhihu.com/people/29-79-68-57-27
