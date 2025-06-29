@@ -6,9 +6,8 @@ categories:
 tags:
   - 工具
   - 安装
-description: 自定义配置右键菜单栏中打开选项卡
-author: Helian Nuits
 ---
+
 
 # 【小工具】ContextMenuForWindows11 安装使用
 
