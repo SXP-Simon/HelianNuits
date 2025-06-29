@@ -108,7 +108,7 @@ $$
 
 alter:
 
-> !!!tip
+> !!!tip "🌻 提示"
 >
 > Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
 >
@@ -120,21 +120,13 @@ alter:
 > | :-----: | :-----: |
 > | content | content |
 
-> !!!important
+> !!!important "❗ 重要"
 > Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
 > |  TITLE  |  title  |
 > | :-----: | :-----: |
 > | content | content |
 
-> !!!note
->
-> Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
->
-> |  TITLE  |  title  |
-> | :-----: | :-----: |
-> | content | content |
-
-> !!!warning
+> !!!note "🌙 说明"
 >
 > Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
 >
@@ -142,7 +134,15 @@ alter:
 > | :-----: | :-----: |
 > | content | content |
 
-> !!!caution
+> !!!warning "⚠️ 警告"
+>
+> Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
+>
+> |  TITLE  |  title  |
+> | :-----: | :-----: |
+> | content | content |
+
+> !!!caution "🔥 注意"
 >
 > Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
 >
