@@ -1,0 +1,533 @@
+/* 夜之向日葵主题增强样式 */
+
+/* ===== 向日葵动画背景 ===== */
+@keyframes sunflower-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(5deg); }
+  50% { transform: translateY(-20px) rotate(0deg); }
+  75% { transform: translateY(-10px) rotate(-5deg); }
+}
+
+@keyframes night-stars {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ===== 页面背景装饰 ===== */
+.md-main::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 215, 0, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 140, 0, 0.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 215, 0, 0.4), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 140, 0, 0.3), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255, 215, 0, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: night-stars 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ===== 向日葵装饰元素 ===== */
+.sunflower-decoration {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 60px;
+  opacity: 0.1;
+  animation: sunflower-float 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.sunflower-decoration::before {
+  content: '🌻';
+}
+
+/* ===== 夜晚装饰元素 ===== */
+.night-decoration {
+  position: fixed;
+  top: 20%;
+  left: 20px;
+  font-size: 40px;
+  opacity: 0.1;
+  animation: sunflower-float 8s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.night-decoration::before {
+  content: '🌙';
+}
+
+/* ===== 卡片悬停效果增强 ===== */
+.md-typeset .card:hover .sunflower-sparkle {
+  animation: sparkle 1s ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+}
+
+/* ===== 向日葵按钮效果 ===== */
+.sunflower-button {
+  background: var(--sunflower-gradient);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+}
+
+.sunflower-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.sunflower-button:hover::before {
+  left: 100%;
+}
+
+.sunflower-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 140, 0, 0.4);
+}
+
+/* ===== 夜晚模式特殊效果 ===== */
+[data-md-color-scheme="slate"] .md-main::before {
+  background: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 215, 0, 0.5), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 140, 0, 0.5), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 215, 0, 0.6), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 140, 0, 0.5), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255, 215, 0, 0.5), transparent);
+}
+
+/* ===== 向日葵进度条 ===== */
+.sunflower-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--sunflower-gradient);
+  z-index: 1000;
+  transition: width 0.3s ease;
+}
+
+/* ===== 向日葵加载动画 ===== */
+.sunflower-loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 140, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: sunflower-spin 1s ease-in-out infinite;
+}
+
+@keyframes sunflower-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== 向日葵工具提示 ===== */
+.sunflower-tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.sunflower-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--night-color);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: 1px solid var(--primary-color);
+}
+
+.sunflower-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--night-color);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.sunflower-tooltip:hover::after,
+.sunflower-tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+  bottom: 135%;
+}
+
+/* ===== 向日葵徽章 ===== */
+.sunflower-badge {
+  display: inline-block;
+  background: var(--sunflower-gradient);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(255, 140, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.sunflower-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.4);
+}
+
+/* ===== 向日葵卡片组 ===== */
+.sunflower-card-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.sunflower-card-group .card {
+  position: relative;
+  overflow: hidden;
+}
+
+.sunflower-card-group .card::before {
+  content: '🌻';
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.sunflower-card-group .card:hover::before {
+  opacity: 0.8;
+  transform: rotate(15deg) scale(1.2);
+}
+
+/* ===== 向日葵导航增强 ===== */
+.md-nav__item .md-nav__link {
+  position: relative;
+  overflow: hidden;
+}
+
+.md-nav__item .md-nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--sunflower-gradient);
+  transition: width 0.3s ease;
+}
+
+.md-nav__item .md-nav__link:hover::after {
+  width: 100%;
+}
+
+/* ===== 向日葵搜索增强 ===== */
+.md-search__input::placeholder {
+  color: rgba(255, 140, 0, 0.6);
+  font-style: italic;
+}
+
+.md-search__input:focus::placeholder {
+  color: rgba(255, 140, 0, 0.8);
+}
+
+/* ===== 向日葵页脚增强 ===== */
+.md-footer {
+  background: var(--night-gradient);
+  border-top: 3px solid var(--primary-color);
+  position: relative;
+}
+
+.md-footer::before {
+  content: '🌻';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  opacity: 0.6;
+  animation: sunflower-rotate 30s linear infinite;
+}
+
+/* ===== 向日葵侧边栏增强 ===== */
+.md-sidebar {
+  border-right: 2px solid rgba(255, 140, 0, 0.2);
+}
+
+.md-sidebar__inner {
+  background: linear-gradient(180deg, rgba(255, 140, 0, 0.02) 0%, transparent 100%);
+}
+
+/* ===== 向日葵内容区域增强 ===== */
+.md-content {
+  position: relative;
+}
+
+.md-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--sunflower-gradient);
+  opacity: 0.3;
+}
+
+/* ===== 向日葵表格增强 ===== */
+.md-typeset table {
+  position: relative;
+}
+
+.md-typeset table::before {
+  content: '📊';
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 16px;
+  opacity: 0.4;
+}
+
+/* ===== 向日葵代码块增强 ===== */
+.md-typeset pre {
+  position: relative;
+}
+
+.md-typeset pre::after {
+  content: '🌙';
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+/* ===== 向日葵引用块增强 ===== */
+.md-typeset blockquote {
+  position: relative;
+}
+
+.md-typeset blockquote::before {
+  content: '🌻';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 24px;
+  opacity: 0.4;
+  background: var(--bg-color);
+  padding: 0 10px;
+}
+
+[data-md-color-scheme="slate"] .md-typeset blockquote::before {
+  background: var(--dark-bg);
+}
+
+/* ===== 向日葵列表增强 ===== */
+.md-typeset ul li::before {
+  content: '🌻';
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  opacity: 0.7;
+  animation: sunflower-pulse 2s ease-in-out infinite;
+}
+
+@keyframes sunflower-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ===== 向日葵链接增强 ===== */
+.md-typeset a[href^="http"]::after {
+  content: '🔗';
+  font-size: 0.8em;
+  margin-left: 0.3em;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.md-typeset a[href^="http"]:hover::after {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* ===== 向日葵图片增强 ===== */
+.md-typeset img {
+  position: relative;
+}
+
+.md-typeset img::after {
+  content: '🖼️';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  opacity: 0.4;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 2px;
+}
+
+/* ===== 向日葵响应式增强 ===== */
+@media (max-width: 768px) {
+  .sunflower-decoration,
+  .night-decoration {
+    display: none;
+  }
+  
+  .md-main::before {
+    background-size: 100px 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sunflower-card-group {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .sunflower-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ===== 向日葵打印样式 ===== */
+@media print {
+  .sunflower-decoration,
+  .night-decoration,
+  .md-main::before {
+    display: none;
+  }
+  
+  .sunflower-button {
+    background: #000 !important;
+    color: #fff !important;
+    box-shadow: none !important;
+  }
+}
+
+/* 导航栏字体优化 */
+.md-header, .md-tabs, .md-tabs__list, .md-nav__item, .md-nav__link {
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.md-nav__link:hover {
+  color: #ffd700 !important;
+}
+
+/* 顶部深色 header 区域优化 */
+.md-header, .md-header__title, .md-header__option, .md-header__button, .md-header .md-icon, .md-header__source, .md-header__topic, .md-header__ellipsis {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+.md-header .md-icon:hover, .md-header__button:hover, .md-header__option:hover {
+  color: #ffd700 !important;
+  fill: #ffd700 !important;
+}
+
+.md-search__input {
+  color: #fff !important;
+}
+
+.md-search__input::placeholder {
+  color: #fff !important;
+  opacity: 0.8;
+}
+
+.md-search__icon {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+/* Header 文字高对比度优化 */
+.md-header__title, .md-header__topic, .md-header__source, .md-header__ellipsis, .md-header__option, .md-header__button {
+  color: #fff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+/* 强制夜之向日葵标题为白色 */
+.md-header__title {
+  color: #fff !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+/* 卡片内文字在亮色模式下为深色，深色模式下为白色 */
+.md-typeset .card, .md-typeset .post-card, .md-typeset .archive-stats, .md-typeset .category-stats {
+  color: #222 !important;
+}
+[data-md-color-scheme="slate"] .md-typeset .card,
+[data-md-color-scheme="slate"] .md-typeset .post-card,
+[data-md-color-scheme="slate"] .md-typeset .archive-stats,
+[data-md-color-scheme="slate"] .md-typeset .category-stats {
+  color: #fff !important;
+}
+
+/* archive-stats 深色模式下背景柔和 */
+[data-md-color-scheme="slate"] .archive-stats {
+  background: rgba(30, 30, 40, 0.85) !important;
+  color: #ffd700 !important;
+  border: 1.5px solid rgba(255, 215, 0, 0.18);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+/* 导航链接在浅色/深色模式下的可读性修正 */
+.md-nav__link {
+  color: #222 !important;
+  font-weight: 600;
+}
+.md-nav__link:hover {
+  color: #ff8c00 !important;
+}
+[data-md-color-scheme="slate"] .md-nav__link {
+  color: #fff !important;
+}
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  color: #ffd700 !important;
+} 
