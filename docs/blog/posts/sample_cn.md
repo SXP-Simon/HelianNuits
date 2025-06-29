@@ -108,7 +108,7 @@ $$
 
 alter:
 
-> [!tip]
+> !!!tip
 >
 > Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
 >
@@ -120,7 +120,13 @@ alter:
 > | :-----: | :-----: |
 > | content | content |
 
-> [!important]
+> !!!important
+> Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
+> |  TITLE  |  title  |
+> | :-----: | :-----: |
+> | content | content |
+
+> !!!note
 >
 > Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
 >
@@ -128,7 +134,7 @@ alter:
 > | :-----: | :-----: |
 > | content | content |
 
-> [!note]
+> !!!warning
 >
 > Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
 >
@@ -136,15 +142,7 @@ alter:
 > | :-----: | :-----: |
 > | content | content |
 
-> [!warning]
->
-> Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
->
-> |  TITLE  |  title  |
-> | :-----: | :-----: |
-> | content | content |
-
-> [!caution]
+> !!!caution
 >
 > Inline styles support **strong**, *Emphasis*, `code`, :smile:, $\LaTeX$, X^2^, H~2~O, table, [Link](https://typora.io), and code block:
 >

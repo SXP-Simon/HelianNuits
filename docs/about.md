@@ -38,7 +38,7 @@ description: 了解 Helian Nuits
 ### 🎮 兴趣爱好
 
 - **动漫**: 四月是你的谎言、近月少女的礼仪等
-- **游戏**: 视觉小说、RPG、独立游戏
+- **游戏**: 视觉小说
 - **音乐**: 古典音乐、动漫音乐、游戏音乐
 - **编程**: Python、Web开发、开源项目
 
@@ -49,9 +49,8 @@ description: 了解 Helian Nuits
 ### 🛠️ 技术栈
 
 - **编程语言**: Python, JavaScript, HTML/CSS
-- **框架工具**: MkDocs, Material主题
-- **开发环境**: VS Code, Git
-- **其他技能**: Markdown, LaTeX
+- **开发环境**: VS Code, Git, Docker
+- **其他技能**: Markdown, LaTeX, Typst
 
 </div>
 
@@ -78,21 +77,19 @@ description: 了解 Helian Nuits
 
 </div>
 
-<div class="card" style="display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 1.5em 0;">
-  <div style="display: flex; align-items: center; gap: 0.7em; margin-bottom: 0.7em;">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/bilibili.svg" alt="Bilibili" width="40" style="filter: grayscale(1) brightness(0.2);" />
-    <span style="font-size: 1.4em; font-weight: bold; letter-spacing: 1px;">Bilibili</span>
-  </div>
-  <a href="https://space.bilibili.com/609923881" target="_blank" style="display: inline-block; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 0.5em 1.5em; border-radius: 20px; font-size: 1.1em; font-weight: 500; text-decoration: none; box-shadow: 0 2px 8px rgba(102,126,234,0.10); transition: background 0.3s;">
-    关注我
-  </a>
-</div>
-
 <div class="card" markdown>
 
 ### :material-email: 联系
 
 [:octicons-arrow-right-24: 发送邮件](mailto:Nighthelianthus@email.ncu.edu.cn)
+
+</div>
+
+<div class="card" markdown>
+
+### :simple-bilibili: B站
+
+[:octicons-arrow-right-24: 访问B站](https://space.bilibili.com/609923881)
 
 </div>
 

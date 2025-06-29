@@ -11,6 +11,25 @@ description: 最新博客文章列表
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
+    <a href="/HelianNuits/blog/posts/ContextMenuForWindows11/">【小工具】ContextMenuForWindows11安装</a>
+  </h3>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年06月29日</span>
+    <span class="category-tag">技术分享</span>
+  </div>
+</div>
+<div class="post-excerpt">
+  暂无描述
+</div>
+<div class="post-footer">
+  <span class="post-author">👤 Helian Nuits</span>
+  <a href="/HelianNuits/blog/posts/ContextMenuForWindows11/" class="read-more">阅读全文 →</a>
+</div>
+</div>
+
+<div class="post-card" markdown>
+<div class="post-header">
+  <h3 class="post-title">
     <a href="/HelianNuits/blog/posts/sample_cn/">Lorem ipsum</a>
   </h3>
   <div class="post-meta">

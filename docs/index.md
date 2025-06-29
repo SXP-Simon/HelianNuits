@@ -101,16 +101,6 @@ description: 此曲为一切不合时宜者而作
 
 </div>
 
-<div class="card" style="display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 1.5em 0;">
-  <div style="display: flex; align-items: center; gap: 0.7em; margin-bottom: 0.7em;">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/bilibili.svg" alt="Bilibili" width="40" style="filter: grayscale(1) brightness(0.2);" />
-    <span style="font-size: 1.4em; font-weight: bold; letter-spacing: 1px;">Bilibili</span>
-  </div>
-  <a href="https://space.bilibili.com/609923881" target="_blank" style="display: inline-block; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 0.5em 1.5em; border-radius: 20px; font-size: 1.1em; font-weight: 500; text-decoration: none; box-shadow: 0 2px 8px rgba(102,126,234,0.10); transition: background 0.3s;">
-    关注我
-  </a>
-</div>
-
 <div class="card" markdown>
 
 ### :material-email: 联系
@@ -126,5 +116,14 @@ description: 此曲为一切不合时宜者而作
 [:octicons-arrow-right-24: 访问知乎](https://www.zhihu.com/people/29-79-68-57-27)
 
 </div>
+
+<div class="card" markdown>
+
+### :simple-bilibili: B站
+
+[:octicons-arrow-right-24: 访问B站](https://space.bilibili.com/609923881)
+
+</div>
+
 
 </div>

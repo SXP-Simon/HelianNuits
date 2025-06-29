@@ -56,6 +56,21 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
+    <a href="/HelianNuits/blog/posts/ContextMenuForWindows11/">【小工具】ContextMenuForWindows11安装</a>
+  </h4>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年06月29日</span>
+    <span class="tag-list">🏷️ 工具, 安装</span>
+  </div>
+  <div class="post-excerpt">
+    暂无描述
+  </div>
+</div>
+</div>
+
+<div class="category-post-card" markdown>
+<div class="post-info">
+  <h4 class="post-title">
     <a href="/HelianNuits/blog/posts/sample_cn/">Lorem ipsum</a>
   </h4>
   <div class="post-meta">
@@ -94,6 +109,6 @@ description: 按分类浏览的文章列表
 ## 📊 分类统计
 
 - **动漫游戏**: 2 篇
-- **技术分享**: 2 篇
+- **技术分享**: 3 篇
 
 </div>

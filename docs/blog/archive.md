@@ -13,6 +13,16 @@ description: 按时间归档的博客文章
 
 <div class="archive-month" markdown>
 
+### 06月
+
+
+<div class="archive-post" markdown>
+- **06月29日** - [【小工具】ContextMenuForWindows11安装](/HelianNuits/blog/posts/ContextMenuForWindows11/) <span class="category-tag">技术分享</span>
+</div>
+
+</div>
+<div class="archive-month" markdown>
+
 ### 01月
 
 
@@ -43,8 +53,8 @@ description: 按时间归档的博客文章
 
 ## 📊 统计信息
 
-- **总文章数**: 4 篇
+- **总文章数**: 5 篇
 - **最早文章**: 2025年01月17日
-- **最新文章**: 2025年01月20日
+- **最新文章**: 2025年06月29日
 
 </div>
