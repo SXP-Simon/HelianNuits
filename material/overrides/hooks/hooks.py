@@ -1,3 +1,21 @@
+"""
+MkDocs 自定义钩子函数模块
+
+本模块为 MkDocs 静态站点生成器提供自定义钩子函数，
+用于自动生成博客文章列表、归档页面和分类页面。
+
+主要功能：
+1. 自动扫描博客文章目录
+2. 提取文章元数据（标题、日期、分类、标签等）
+3. 生成最新文章列表页面
+4. 生成时间归档页面
+5. 生成分类浏览页面
+6. 自动更新 MkDocs 导航配置
+
+作者: Helian Nuits
+创建时间: 2025年
+"""
+
 import os
 import re
 import yaml
@@ -6,41 +24,131 @@ from pathlib import Path
 from collections import defaultdict
 from ruamel.yaml import YAML
 
+# ==================== 全局配置常量 ====================
+
 # 获取当前 hooks.py 文件的绝对路径
 HOOKS_DIR = os.path.dirname(os.path.abspath(__file__))
 # 项目根目录（hooks.py 在 material/overrides/hooks/ 下，向上三级）
 PROJECT_ROOT = os.path.abspath(os.path.join(HOOKS_DIR, '..', '..', '..'))
+# MkDocs 配置文件路径
 MKDOCS_YML = os.path.join(PROJECT_ROOT, 'mkdocs.yml')
+# 博客文章目录路径
 POSTS_DIR = os.path.join(PROJECT_ROOT, 'docs', 'blog', 'posts')
 
-# 生成slug
-slugify = lambda s: re.sub(r'[^\w\u4e00-\u9fa5-]+', '-', s).strip('-').lower()
+# ==================== 工具函数 ====================
+
+def slugify(s):
+    """
+    将字符串转换为 URL 友好的 slug
+    
+    Args:
+        s (str): 输入字符串
+        
+    Returns:
+        str: 转换后的 slug，只包含字母、数字、中文字符和连字符
+    """
+    return re.sub(r'[^\w\u4e00-\u9fa5-]+', '-', s).strip('-').lower()
 
 def get_post_url(post):
+    """
+    根据文章信息生成文章链接
+    
+    Args:
+        post (dict): 包含文章信息的字典
+        
+    Returns:
+        str: 文章的 URL 路径
+    """
     filename = post['filename']
     name = os.path.splitext(filename)[0]
     # 使用绝对路径，确保链接始终指向正确的地址
     return f"/HelianNuits/blog/posts/{name}/"
 
+# ==================== 主要钩子函数 ====================
+
 def on_files(files, config):
-    """在文件处理时自动生成博客页面"""
+    """
+    在文件处理时自动生成博客页面
+    
+    这是 MkDocs 的核心钩子函数，在文件处理阶段被调用。
+    负责扫描博客文章并生成相关的索引页面。
+    
+    Args:
+        files: MkDocs 文件对象
+        config: MkDocs 配置对象
+        
+    Returns:
+        files: 处理后的文件对象
+    """
     print("=== 开始执行on_files钩子 ===")
     generate_blog_pages(config)
     update_mkdocs_nav()
     print("=== on_files钩子执行完成 ===")
     return files
 
+def on_page_markdown(markdown, page, config, files):
+    """
+    在生成 Markdown 内容时触发
+    
+    为博客文章自动添加发布日期信息。
+    
+    Args:
+        markdown (str): 页面的 Markdown 内容
+        page: 页面对象
+        config: MkDocs 配置对象
+        files: 文件对象
+        
+    Returns:
+        str: 处理后的 Markdown 内容
+    """
+    # 检查是否为博客文章页面（排除博客首页）
+    if page.file.src_path.replace('\\', '/').startswith('blog/') and page.file.src_path != 'blog/index.md':
+        # 检查是否已经包含发布日期
+        if not markdown.startswith('**发布日期：'):
+            # 获取当前日期
+            today = datetime.now().strftime('%Y-%m-%d')
+            # 在文章顶部插入发布日期
+            markdown = f"**发布日期：{today}**\n\n" + markdown
+    return markdown
+
+def on_post_build(config):
+    """
+    在构建完成后生成博客页面
+    
+    作为备用钩子，确保在构建完成后也能生成博客页面。
+    
+    Args:
+        config: MkDocs 配置对象
+    """
+    print("=== 开始执行on_post_build钩子 ===")
+    generate_blog_pages(config)
+    print("=== on_post_build钩子执行完成 ===")
+
+# ==================== 博客页面生成函数 ====================
+
 def generate_blog_pages(config):
-    """生成博客相关页面"""
+    """
+    生成博客相关页面的主函数
+    
+    负责协调生成所有博客相关的页面，包括：
+    - 最新文章列表页面
+    - 时间归档页面
+    - 分类浏览页面
+    
+    Args:
+        config: MkDocs 配置对象
+    """
     docs_dir = Path(config['docs_dir'])
     posts_dir = docs_dir / 'blog' / 'posts'
     
+    # 检查文章目录是否存在
     if not posts_dir.exists():
         return
     
     # 收集所有博客文章
     posts = []
     for post_file in posts_dir.glob('*.md'):
+        # 跳过以下划线开头的文件（通常是草稿或模板）
         if post_file.name.startswith('_'):
             continue
             
@@ -48,59 +156,65 @@ def generate_blog_pages(config):
         if post_info:
             posts.append(post_info)
     
-    # 按日期排序
+    # 按日期排序（最新的在前）
     posts.sort(key=lambda x: x['date'], reverse=True)
     
-    # 生成最新文章页面
+    # 生成各种博客页面
     generate_latest_posts_page(docs_dir, posts, config)
-    
-    # 生成时间归档页面
     generate_archive_page(docs_dir, posts)
-    
-    # 生成分类页面
     generate_categories_page(docs_dir, posts)
     
     print("博客构建成功！文章列表和归档已自动生成。")
 
 def extract_post_info(post_file):
-    """提取文章信息"""
+    """
+    从 Markdown 文件中提取文章信息
+    
+    解析文章的 front matter 部分，提取标题、日期、分类、标签等信息。
+    
+    Args:
+        post_file (Path): 文章文件路径
+        
+    Returns:
+        dict: 包含文章信息的字典，如果解析失败返回 None
+    """
     try:
         with open(post_file, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # 提取front matter
+        # 提取 front matter（YAML 格式的元数据）
         front_matter_match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
         if not front_matter_match:
             return None
         
         front_matter = yaml.safe_load(front_matter_match.group(1))
         
-        # 提取标题
+        # 提取标题（如果没有则使用文件名）
         title = front_matter.get('title', post_file.stem)
         
-        # 提取日期
+        # 提取并解析日期
         date_str = front_matter.get('date', '2025-01-01')
         if isinstance(date_str, str):
             try:
                 date = datetime.strptime(date_str, '%Y-%m-%d')
             except ValueError:
+                # 如果日期格式错误，使用默认日期
                 date = datetime(2025, 1, 1)
         else:
             date = date_str
         
-        # 提取分类和标签
+        # 提取分类（确保是列表格式）
         categories = front_matter.get('categories', [])
         if isinstance(categories, str):
             categories = [categories]
         
+        # 提取标签（确保是列表格式）
         tags = front_matter.get('tags', [])
         if isinstance(tags, str):
             tags = [tags]
         
-        # 提取描述
+        # 提取描述和作者信息
         description = front_matter.get('description', '')
-        
-        # 提取作者
         author = front_matter.get('author', 'Helian Nuits')
         
         return {
@@ -117,14 +231,25 @@ def extract_post_info(post_file):
         return None
 
 def generate_latest_posts_page(docs_dir, posts, config):
-    """生成最新文章页面"""
+    """
+    生成最新文章列表页面
+    
+    创建一个展示最新博客文章的页面，包含文章卡片、元数据和链接。
+    
+    Args:
+        docs_dir (Path): 文档目录路径
+        posts (list): 文章信息列表
+        config: MkDocs 配置对象
+    """
     blog_dir = docs_dir / 'blog'
     blog_dir.mkdir(exist_ok=True)
     
-    # 生成最新文章卡片
+    # 生成最新文章卡片 HTML
     latest_posts_html = ""
     for post in posts[:10]:  # 显示最新10篇文章
         date_str = post['date'].strftime('%Y年%m月%d日')
+        
+        # 生成分类标签 HTML
         categories_html = ""
         if post['categories']:
             categories_html = f'<span class="category-tag">{", ".join(post["categories"])}</span>'
@@ -151,12 +276,13 @@ def generate_latest_posts_page(docs_dir, posts, config):
 </div>
 '''
     
+    # 生成 RSS 订阅链接
     site_url = config.get('site_url', '/')
     if site_url and not site_url.endswith('/'):
         site_url += '/'
     rss_url = f"{site_url}feed_rss_created.xml"
     
-    # 生成完整的index.md内容
+    # 生成完整的 index.md 内容
     index_content = f'''---
 title: 博客文章
 description: 最新博客文章列表
@@ -183,21 +309,30 @@ description: 最新博客文章列表
 </div>
 '''
     
+    # 写入文件
     with open(blog_dir / 'index.md', 'w', encoding='utf-8') as f:
         f.write(index_content)
 
 def generate_archive_page(docs_dir, posts):
-    """生成时间归档页面"""
+    """
+    生成时间归档页面
+    
+    按年份和月份组织文章，创建时间归档页面。
+    
+    Args:
+        docs_dir (Path): 文档目录路径
+        posts (list): 文章信息列表
+    """
     blog_dir = docs_dir / 'blog'
     
-    # 按年份和月份分组
+    # 按年份和月份分组文章
     archive_by_date = defaultdict(lambda: defaultdict(list))
     for post in posts:
         year = post['date'].year
         month = post['date'].month
         archive_by_date[year][month].append(post)
     
-    # 生成归档内容
+    # 生成归档内容 HTML
     archive_html = ""
     for year in sorted(archive_by_date.keys(), reverse=True):
         archive_html += f'<div class="archive-year" markdown>\n\n## {year}年\n\n'
@@ -209,6 +344,8 @@ def generate_archive_page(docs_dir, posts):
             
             for post in month_posts:
                 date_str = post['date'].strftime('%m月%d日')
+                
+                # 生成分类标签
                 categories_html = ""
                 if post['categories']:
                     categories_html = f'<span class="category-tag">{", ".join(post["categories"])}</span>'
@@ -224,7 +361,7 @@ def generate_archive_page(docs_dir, posts):
         
         archive_html += '\n</div>\n'
     
-    # 生成完整的archive.md内容
+    # 生成完整的 archive.md 内容
     archive_content = f'''---
 title: 时间归档
 description: 按时间归档的博客文章
@@ -249,20 +386,29 @@ description: 按时间归档的博客文章
 </div>
 '''
     
+    # 写入文件
     with open(blog_dir / 'archive.md', 'w', encoding='utf-8') as f:
         f.write(archive_content)
 
 def generate_categories_page(docs_dir, posts):
-    """生成分类页面"""
+    """
+    生成分类浏览页面
+    
+    按分类组织文章，创建分类浏览页面。
+    
+    Args:
+        docs_dir (Path): 文档目录路径
+        posts (list): 文章信息列表
+    """
     blog_dir = docs_dir / 'blog'
     
-    # 按分类分组
+    # 按分类分组文章
     categories_posts = defaultdict(list)
     for post in posts:
         for category in post['categories']:
             categories_posts[category].append(post)
     
-    # 生成分类内容
+    # 生成分类内容 HTML
     categories_html = ""
     for category in sorted(categories_posts.keys()):
         category_posts = categories_posts[category]
@@ -271,6 +417,8 @@ def generate_categories_page(docs_dir, posts):
         
         for post in category_posts:
             date_str = post['date'].strftime('%Y年%m月%d日')
+            
+            # 生成标签 HTML
             tags_html = ""
             if post['tags']:
                 tags_html = f'<span class="tag-list">🏷️ {", ".join(post["tags"])}</span>'
@@ -295,7 +443,7 @@ def generate_categories_page(docs_dir, posts):
         
         categories_html += '\n</div>\n</div>\n'
     
-    # 生成完整的categories.md内容
+    # 生成完整的 categories.md 内容
     categories_content = f'''---
 title: 文章分类
 description: 按分类浏览的文章列表
@@ -315,6 +463,7 @@ description: 按分类浏览的文章列表
 
 '''
     
+    # 添加分类统计信息
     for category in sorted(categories_posts.keys()):
         count = len(categories_posts[category])
         categories_content += f'- **{category}**: {count} 篇\n'
@@ -323,31 +472,21 @@ description: 按分类浏览的文章列表
 </div>
 '''
     
+    # 写入文件
     with open(blog_dir / 'categories.md', 'w', encoding='utf-8') as f:
         f.write(categories_content)
 
-def on_page_markdown(markdown, page, config, files):
-    """
-    在生成 Markdown 内容时触发。
-    在每篇博客文章的顶部插入发布日期。
-    """
-    if page.file.src_path.replace('\\', '/').startswith('blog/') and page.file.src_path != 'blog/index.md':
-        # 检查是否已经包含发布日期
-        if not markdown.startswith('**发布日期：'):
-            # 获取当前日期
-            today = datetime.now().strftime('%Y-%m-%d')
-            # 在文章顶部插入发布日期
-            markdown = f"**发布日期：{today}**\n\n" + markdown
-    return markdown
+# ==================== 导航配置更新函数 ====================
 
-def on_post_build(config):
-    """在构建完成后生成博客页面"""
-    print("=== 开始执行on_post_build钩子 ===")
-    generate_blog_pages(config)
-    print("=== on_post_build钩子执行完成 ===")
-
-# 生成博客文章列表
 def get_post_nav():
+    """
+    获取博客文章的导航配置
+    
+    扫描文章目录，为每篇文章生成导航项。
+    
+    Returns:
+        list: 包含文章导航配置的列表
+    """
     post_nav = []
     for fname in sorted(os.listdir(POSTS_DIR)):
         if fname.endswith('.md'):
@@ -356,25 +495,41 @@ def get_post_nav():
     return post_nav
 
 def update_mkdocs_nav():
+    """
+    更新 MkDocs 导航配置
+    
+    自动更新 mkdocs.yml 文件中的导航配置，添加博客相关的导航项。
+    使用 ruamel.yaml 保持 YAML 格式和注释。
+    """
     yaml = YAML()
     yaml.preserve_quotes = True
+    
+    # 读取现有的 mkdocs.yml 文件
     with open(MKDOCS_YML, 'r', encoding='utf-8') as f:
         data = yaml.load(f)
 
     nav = data.get('nav', [])
+    
+    # 创建新的博客导航配置
     new_blog_nav = [
         {'博客首页': 'blog/index.md'},
         {'文章列表': get_post_nav()}
     ]
+    
+    # 查找并更新现有的博客导航项
     found = False
     for i, item in enumerate(nav):
         if isinstance(item, dict) and '博客' in item:
             nav[i]['博客'] = new_blog_nav
             found = True
             break
+    
+    # 如果没有找到现有的博客导航项，则添加新的
     if not found:
         nav.append({'博客': new_blog_nav})
+    
     data['nav'] = nav
 
+    # 写回文件
     with open(MKDOCS_YML, 'w', encoding='utf-8') as f:
         yaml.dump(data, f)
