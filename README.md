@@ -38,15 +38,15 @@ HelianNuits/
 
 ```markdown
 ---
-title: 文章标题
-date: 2025-01-01
+title: Front Matter 模板
+author: Helian Nuits
+description: 这里是一个 Front Matter 示例
+date: 2025-07-01
 categories:
   - 技术分享
 tags:
-  - Python
-  - 教程
-description: 文章描述
-author: Helian Nuits
+  - 模板
+  - 示例
 ---
 
 # ... 文章内容
