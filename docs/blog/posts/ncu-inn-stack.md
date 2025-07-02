@@ -1,5 +1,5 @@
 ---
-title: Front Matter 模板
+title: ncu-inn-stack
 author: Helian Nuits
 description: NCU INN STACK 暑期远征
 date: 2025-07-02
