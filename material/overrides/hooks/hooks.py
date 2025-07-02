@@ -82,7 +82,28 @@ def on_files(files, config):
     """
     print("=== 开始执行on_files钩子 ===")
     generate_blog_pages(config)
-    update_mkdocs_nav()
+
+    # 检查 nav 配置中的 blog/posts 下的文章文件是否都存在
+    yaml = YAML()
+    yaml.preserve_quotes = True
+    with open(MKDOCS_YML, 'r', encoding='utf-8') as f:
+        data = yaml.load(f)
+    nav = data.get('nav', [])
+    need_update = False
+    for item in nav:
+        if isinstance(item, dict) and '博客' in item:
+            blog_nav = item['博客']
+            for sub in blog_nav:
+                if isinstance(sub, dict) and '文章列表' in sub:
+                    post_list = sub['文章列表']
+                    for post in post_list:
+                        if isinstance(post, dict):
+                            for title, path in post.items():
+                                if path.startswith('blog/posts/') and not os.path.exists(os.path.join(PROJECT_ROOT, 'docs', path)):
+                                    print(f"导航中存在不存在的文章: {path}，将自动修正导航配置。")
+                                    need_update = True
+    if need_update:
+        update_mkdocs_nav()
     print("=== on_files钩子执行完成 ===")
     return files
 
