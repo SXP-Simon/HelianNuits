@@ -70,7 +70,6 @@ mkdocs gh-deploy
 
 - **mkdocs-material**: 主题和核心功能
 - **mkdocs-blog-plugin**: 博客功能
-- **mkdocs-static-i18n**: 多语言支持
 - **mkdocs-rss-plugin**: RSS 订阅
 - **mkdocs-minify-plugin**: 代码压缩
 
