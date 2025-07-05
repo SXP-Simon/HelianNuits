@@ -65,7 +65,7 @@
   transition: transform 0.4s ease;
 }
 
-.md-typeset .card::after {
+/* .md-typeset .card::after {
   content: '🌙';
   position: absolute;
   top: 15px;
@@ -73,7 +73,7 @@
   font-size: 18px;
   opacity: 0.3;
   transition: all 0.3s ease;
-}
+} */
 
 .md-typeset .card:hover {
   transform: translateY(-8px) scale(1.02);
@@ -390,14 +390,14 @@
   opacity: 0.6;
 }
 
-/* .md-typeset h2::before {
+.md-typeset h2::before {
   content: '🌙';
   position: absolute;
   right: 0;
   top: 0;
   font-size: 1.2rem;
   opacity: 0.6;
-} */
+}
 
 /* ===== 列表样式 ===== */
 .md-typeset ul li,
