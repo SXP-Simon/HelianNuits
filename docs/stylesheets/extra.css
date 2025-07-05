@@ -390,14 +390,14 @@
   opacity: 0.6;
 }
 
-.md-typeset h2::before {
+/* .md-typeset h2::before {
   content: '🌙';
   position: absolute;
   right: 0;
   top: 0;
   font-size: 1.2rem;
   opacity: 0.6;
-}
+} */
 
 /* ===== 列表样式 ===== */
 .md-typeset ul li,
