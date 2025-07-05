@@ -20,8 +20,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw; /* 明确使用视口单位 */
+  height: 100vh;
   background: 
     radial-gradient(2px 2px at 20px 30px, rgba(255, 215, 0, 0.3), transparent),
     radial-gradient(2px 2px at 40px 70px, rgba(255, 140, 0, 0.3), transparent),
@@ -29,10 +29,16 @@
     radial-gradient(1px 1px at 130px 80px, rgba(255, 140, 0, 0.3), transparent),
     radial-gradient(2px 2px at 160px 30px, rgba(255, 215, 0, 0.3), transparent);
   background-repeat: repeat;
-  background-size: 200px 100px;
+  background-size: 100px 50px;
   animation: night-stars 4s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
+}
+
+/* 确保父元素不限制伪元素 */
+.md-main {
+  position: relative;
+  overflow: visible; /* 避免裁剪 */
 }
 
 /* ===== 向日葵装饰元素 ===== */
