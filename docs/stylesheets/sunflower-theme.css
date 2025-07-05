@@ -342,14 +342,14 @@
   position: relative;
 }
 
-.md-typeset pre::after {
+/* .md-typeset pre::after {
   content: '🌙';
   position: absolute;
   bottom: 10px;
   left: 15px;
   font-size: 14px;
   opacity: 0.4;
-}
+} */
 
 /* ===== 向日葵引用块增强 ===== */
 .md-typeset blockquote {
