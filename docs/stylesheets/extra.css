@@ -1010,6 +1010,15 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 } 
 
+/* ===== 修复遮罩层问题 ===== */
+.md-overlay {
+  z-index: 3 !important;
+}
+
+.md-sidebar {
+  z-index: 4 !important;
+}
+
 @media (max-width: 1220px) {
   .md-overlay {
     left: 300px !important;
