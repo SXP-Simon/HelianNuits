@@ -1009,3 +1009,11 @@
   border: 1.5px solid rgba(255, 215, 0, 0.18);
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 } 
+
+@media (max-width: 1220px) {
+  .md-overlay {
+    left: 300px !important;
+    width: calc(100vw - 300px) !important;
+    right: 0 !important;
+  }
+}

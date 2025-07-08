@@ -72,6 +72,7 @@ def on_files(files, config):
     
     这是 MkDocs 的核心钩子函数，在文件处理阶段被调用。
     负责扫描博客文章并生成相关的索引页面。
+    同时处理文章的增删，自动更新导航配置。
     
     Args:
         files: MkDocs 文件对象
@@ -83,27 +84,76 @@ def on_files(files, config):
     print("=== 开始执行on_files钩子 ===")
     generate_blog_pages(config)
 
-    # 检查 nav 配置中的 blog/posts 下的文章文件是否都存在
+    # 检查导航中的文章是否都存在，如果有文章被删除则更新导航
     yaml = YAML()
     yaml.preserve_quotes = True
     with open(MKDOCS_YML, 'r', encoding='utf-8') as f:
         data = yaml.load(f)
+    
     nav = data.get('nav', [])
     need_update = False
-    for item in nav:
-        if isinstance(item, dict) and '博客' in item:
-            blog_nav = item['博客']
-            for sub in blog_nav:
-                if isinstance(sub, dict) and '文章列表' in sub:
-                    post_list = sub['文章列表']
-                    for post in post_list:
-                        if isinstance(post, dict):
-                            for title, path in post.items():
-                                if path.startswith('blog/posts/') and not os.path.exists(os.path.join(PROJECT_ROOT, 'docs', path)):
-                                    print(f"导航中存在不存在的文章: {path}，将自动修正导航配置。")
-                                    need_update = True
+
+    def check_posts_existence(items):
+        nonlocal need_update
+        for item in items:
+            if isinstance(item, dict):
+                if '博客' in item:
+                    blog_nav = item['博客']
+                    for sub in blog_nav:
+                        if isinstance(sub, dict) and '文章列表' in sub:
+                            post_list = sub['文章列表']
+                            for post in post_list:
+                                if isinstance(post, dict):
+                                    for title, path in post.items():
+                                        if path.startswith('blog/posts/'):
+                                            full_path = os.path.join(PROJECT_ROOT, 'docs', path)
+                                            if not os.path.exists(full_path):
+                                                print(f"导航中存在不存在的文章: {path}，将自动更新导航配置。")
+                                                need_update = True
+                                                return
+                elif any(isinstance(v, list) for v in item.values()):
+                    for v in item.values():
+                        if isinstance(v, list):
+                            check_posts_existence(v)
+
+    check_posts_existence(nav)
+    
+    # 检查是否有新文章被添加
+    current_posts = set()
+    if os.path.exists(POSTS_DIR):
+        for fname in os.listdir(POSTS_DIR):
+            if fname.endswith('.md'):
+                current_posts.add(f'blog/posts/{fname}')
+
+    def get_nav_posts(items):
+        posts = set()
+        for item in items:
+            if isinstance(item, dict):
+                if '博客' in item:
+                    blog_nav = item['博客']
+                    for sub in blog_nav:
+                        if isinstance(sub, dict) and '文章列表' in sub:
+                            post_list = sub['文章列表']
+                            for post in post_list:
+                                if isinstance(post, dict):
+                                    for path in post.values():
+                                        if path.startswith('blog/posts/'):
+                                            posts.add(path)
+                elif any(isinstance(v, list) for v in item.values()):
+                    for v in item.values():
+                        if isinstance(v, list):
+                            posts.update(get_nav_posts(v))
+        return posts
+
+    nav_posts = get_nav_posts(nav)
+    
+    # 如果有新文章或文章被删除，更新导航
+    if current_posts != nav_posts:
+        need_update = True
+
     if need_update:
         update_mkdocs_nav()
+        
     print("=== on_files钩子执行完成 ===")
     return files
 
@@ -504,22 +554,27 @@ def get_post_nav():
     获取博客文章的导航配置
     
     扫描文章目录，为每篇文章生成导航项。
+    只返回实际存在的文章。
     
     Returns:
         list: 包含文章导航配置的列表
     """
     post_nav = []
-    for fname in sorted(os.listdir(POSTS_DIR)):
-        if fname.endswith('.md'):
-            name = os.path.splitext(fname)[0]
-            post_nav.append({name: f'blog/posts/{fname}'})
+    if os.path.exists(POSTS_DIR):
+        for fname in sorted(os.listdir(POSTS_DIR)):
+            if fname.endswith('.md'):
+                file_path = os.path.join(POSTS_DIR, fname)
+                # 只添加实际存在的文件
+                if os.path.isfile(file_path):
+                    name = os.path.splitext(fname)[0]
+                    post_nav.append({name: f'blog/posts/{fname}'})
     return post_nav
 
 def update_mkdocs_nav():
     """
     更新 MkDocs 导航配置
     
-    自动更新 mkdocs.yml 文件中的导航配置，添加博客相关的导航项。
+    只更新博客文章列表，保持其他导航结构不变。
     使用 ruamel.yaml 保持 YAML 格式和注释。
     """
     yaml = YAML()
@@ -531,23 +586,38 @@ def update_mkdocs_nav():
 
     nav = data.get('nav', [])
     
-    # 创建新的博客导航配置
-    new_blog_nav = [
-        {'博客首页': 'blog/index.md'},
-        {'文章列表': get_post_nav()}
-    ]
+    # 获取最新的文章列表
+    post_nav = get_post_nav()
     
-    # 查找并更新现有的博客导航项
-    found = False
-    for i, item in enumerate(nav):
-        if isinstance(item, dict) and '博客' in item:
-            nav[i]['博客'] = new_blog_nav
-            found = True
-            break
-    
-    # 如果没有找到现有的博客导航项，则添加新的
-    if not found:
-        nav.append({'博客': new_blog_nav})
+    # 遍历导航结构，只更新文章列表部分
+    def update_posts_nav(items):
+        for item in items:
+            if isinstance(item, dict):
+                # 找到博客导航项
+                if '博客' in item:
+                    blog_nav = item['博客']
+                    # 遍历博客下的子项
+                    for sub_item in blog_nav:
+                        if isinstance(sub_item, dict) and '文章列表' in sub_item:
+                            # 更新文章列表
+                            sub_item['文章列表'] = post_nav
+                            return True
+                # 递归处理嵌套的导航项
+                elif any(isinstance(v, list) for v in item.values()):
+                    for v in item.values():
+                        if isinstance(v, list) and update_posts_nav(v):
+                            return True
+        return False
+
+    # 更新导航结构
+    if not update_posts_nav(nav):
+        # 如果没有找到文章列表，则在博客导航下添加
+        for item in nav:
+            if isinstance(item, dict) and '博客' in item:
+                blog_nav = item['博客']
+                if not any(isinstance(sub_item, dict) and '文章列表' in sub_item for sub_item in blog_nav):
+                    blog_nav.append({'文章列表': post_nav})
+                break
     
     data['nav'] = nav
 

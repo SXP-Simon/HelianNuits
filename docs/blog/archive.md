@@ -13,8 +13,30 @@ description: 按时间归档的博客文章
 
 <div class="archive-month" markdown>
 
+### 07月
+
+
+<div class="archive-post" markdown>
+- **07月07日** - [成一事者，矢志不渝之愚者](/HelianNuits/blog/posts/竭尽全力成为矢志不渝之愚者/) <span class="category-tag">杂谈</span>
+</div>
+
+<div class="archive-post" markdown>
+- **07月04日** - [25 暑假初期学习规划](/HelianNuits/blog/posts/25暑假初期学习规划/) <span class="category-tag">杂谈</span>
+</div>
+
+<div class="archive-post" markdown>
+- **07月02日** - [ncu-inn-stack](/HelianNuits/blog/posts/ncu-inn-stack/) <span class="category-tag">技术分享</span>
+</div>
+
+</div>
+<div class="archive-month" markdown>
+
 ### 06月
 
+
+<div class="archive-post" markdown>
+- **06月30日** - [Narcissu|一段灿烂的故事，一个冬日的回忆](/HelianNuits/blog/posts/【Narcissus】一段灿烂的故事/) <span class="category-tag">动漫游戏</span>
+</div>
 
 <div class="archive-post" markdown>
 - **06月29日** - [【小工具】ContextMenuForWindows11安装](/HelianNuits/blog/posts/ContextMenuForWindows11/) <span class="category-tag">技术分享</span>
@@ -38,10 +60,6 @@ description: 按时间归档的博客文章
 - **01月18日** - [近月少女的礼仪2官中来袭](/HelianNuits/blog/posts/近月2官中来袭/) <span class="category-tag">动漫游戏</span>
 </div>
 
-<div class="archive-post" markdown>
-- **01月17日** - [demo](/HelianNuits/blog/posts/demo/) <span class="category-tag">技术分享</span>
-</div>
-
 </div>
 
 </div>
@@ -53,8 +71,8 @@ description: 按时间归档的博客文章
 
 ## 📊 统计信息
 
-- **总文章数**: 5 篇
-- **最早文章**: 2025年01月17日
-- **最新文章**: 2025年06月29日
+- **总文章数**: 8 篇
+- **最早文章**: 2025年01月18日
+- **最新文章**: 2025年07月07日
 
 </div>

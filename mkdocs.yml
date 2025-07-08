@@ -121,9 +121,13 @@ nav:
 - 博客:
   - 博客首页: blog/index.md
   - 文章列表:
+    - 25暑假初期学习规划: blog/posts/25暑假初期学习规划.md
     - ContextMenuForWindows11: blog/posts/ContextMenuForWindows11.md
+    - ncu-inn-stack: blog/posts/ncu-inn-stack.md
     - sample_cn: blog/posts/sample_cn.md
+    - 【Narcissus】一段灿烂的故事: blog/posts/【Narcissus】一段灿烂的故事.md
     - 四月是你的谎言: blog/posts/四月是你的谎言.md
+    - 竭尽全力成为矢志不渝之愚者: blog/posts/竭尽全力成为矢志不渝之愚者.md
     - 近月2官中来袭: blog/posts/近月2官中来袭.md
 - 分类: blog/categories.md
 - 归档: blog/archive.md
@@ -184,7 +188,6 @@ markdown_extensions:
 extra_javascript:
 - javascripts/mathjax.js
 - javascripts/sunflower-effects.js
-- https://polyfill.io/v3/polyfill.min.js?features=es6
 - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
