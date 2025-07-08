@@ -7,6 +7,7 @@ site_description: 夜之向日葵，此曲为一切不合时宜者而作。
 # 代码仓库信息
 repo_name: HelianNuits
 repo_url: https://github.com/SXP-Simon/HelianNuits
+edit_uri: edit/main/docs/
 
 # 版权信息
 copyright: Copyright &copy; 2025 ~ now | HelianNuits
