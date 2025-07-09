@@ -8,6 +8,7 @@
   --night-color: #1a1a2e; /* 深蓝色 - 夜晚 */
   --dark-bg: #0f0f23; /* 更深蓝 - 夜空 */
   --text-color: #2c3e50;
+  --text-bold-color: var(--primary-color); /* 加粗文本颜色 */
   --bg-color: #ffffff;
   --card-bg: #f8f9fa;
   --border-radius: 12px;
@@ -1009,6 +1010,16 @@
   border: 1.5px solid rgba(255, 215, 0, 0.18);
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 } 
+
+/* ===== Markdown 样式 ===== */
+.md-typeset strong {
+  color: var(--text-bold-color);
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-typeset strong {
+  color: var(--accent-color);
+}
 
 /* ===== 修复遮罩层问题 ===== */
 .md-overlay {
