@@ -125,6 +125,21 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
+    <a href="/HelianNuits/blog/posts/天空充满了不安的言语/">天空充满了不安的言语</a>
+  </h4>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月09日</span>
+    <span class="tag-list">🏷️ 杂谈</span>
+  </div>
+  <div class="post-excerpt">
+    快要回归天空了
+  </div>
+</div>
+</div>
+
+<div class="category-post-card" markdown>
+<div class="post-info">
+  <h4 class="post-title">
     <a href="/HelianNuits/blog/posts/竭尽全力成为矢志不渝之愚者/">成一事者，矢志不渝之愚者</a>
   </h4>
   <div class="post-meta">
@@ -164,6 +179,6 @@ description: 按分类浏览的文章列表
 
 - **动漫游戏**: 3 篇
 - **技术分享**: 3 篇
-- **杂谈**: 2 篇
+- **杂谈**: 3 篇
 
 </div>

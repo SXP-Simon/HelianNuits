@@ -17,6 +17,10 @@ description: 按时间归档的博客文章
 
 
 <div class="archive-post" markdown>
+- **07月09日** - [天空充满了不安的言语](/HelianNuits/blog/posts/天空充满了不安的言语/) <span class="category-tag">杂谈</span>
+</div>
+
+<div class="archive-post" markdown>
 - **07月07日** - [成一事者，矢志不渝之愚者](/HelianNuits/blog/posts/竭尽全力成为矢志不渝之愚者/) <span class="category-tag">杂谈</span>
 </div>
 
@@ -71,8 +75,8 @@ description: 按时间归档的博客文章
 
 ## 📊 统计信息
 
-- **总文章数**: 8 篇
+- **总文章数**: 9 篇
 - **最早文章**: 2025年01月18日
-- **最新文章**: 2025年07月07日
+- **最新文章**: 2025年07月09日
 
 </div>
