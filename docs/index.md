@@ -81,7 +81,7 @@ description: 此曲为一切不合时宜者而作
 
 <div style="display: flex; justify-content: center; margin: 2em 0;">
   <div class="card" style="max-width: 400px; padding: 2em 1em; background: linear-gradient(135deg, #f8fafc 60%, #e0e7ff 100%); border-radius: 18px; box-shadow: 0 4px 24px rgba(102,126,234,0.10); display: flex; flex-direction: column; align-items: center;">
-    <img src="assets/HelianNuits.jpg" width="220" alt="HelianNuits" style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.13);margin-bottom:1.2em;" />
+    <img src="assets/HelianNuits.png" width="220" alt="HelianNuits" style="border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.13);margin-bottom:1.2em;" />
     <div style="font-size: 1.15em; color: #444; font-weight: 500; text-align: center; margin-top: 0.5em;">
       夜之向日葵<br>
       <span style="display:inline-block; margin-top:0.5em; color:#764ba2; font-style:italic; font-size:1em; font-weight:400;">
