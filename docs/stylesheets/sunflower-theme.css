@@ -1,5 +1,14 @@
 /* 夜之向日葵主题增强样式 */
 
+/* ===== 页面过渡效果 ===== */
+.md-main {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+}
+
+.md-main__inner {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+}
+
 /* ===== 向日葵动画背景 ===== */
 @keyframes sunflower-float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }

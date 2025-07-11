@@ -1,28 +1,23 @@
 // 夜之向日葵主题交互效果
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 添加向日葵装饰元素
-    addSunflowerDecorations();
-    
-    // 添加进度条
-    addProgressBar();
-    
-    // 添加滚动效果
-    addScrollEffects();
-    
-    // 添加向日葵按钮效果
-    addSunflowerButtonEffects();
-    
-    // 添加工具提示
-    addTooltips();
-    
-    // 添加页面加载动画
-    addPageLoadAnimation();
-});
+// 全局状态管理
+const pageState = {
+    decorationsInitialized: false,
+    contentRestored: false
+};
+
+// 清理装饰元素
+function cleanupDecorations() {
+    document.querySelectorAll('.sunflower-decoration, .night-decoration, .floating-decoration').forEach(el => {
+        el.remove();
+    });
+    pageState.decorationsInitialized = false;
+}
 
 // 添加向日葵装饰元素
 function addSunflowerDecorations() {
+    if (pageState.decorationsInitialized) return;
+    
     const body = document.body;
     
     // 创建向日葵装饰
@@ -38,6 +33,7 @@ function addSunflowerDecorations() {
     // 随机添加更多装饰
     for (let i = 0; i < 3; i++) {
         const decoration = document.createElement('div');
+        decoration.className = 'floating-decoration';
         decoration.style.cssText = `
             position: fixed;
             top: ${Math.random() * 100}%;
@@ -51,20 +47,43 @@ function addSunflowerDecorations() {
         decoration.innerHTML = Math.random() > 0.5 ? '🌻' : '🌙';
         body.appendChild(decoration);
     }
+    
+    pageState.decorationsInitialized = true;
+}
+
+// 添加页面加载动画
+function addPageLoadAnimation() {
+    const main = document.querySelector('.md-main');
+    if (!main) return;
+    
+    main.style.opacity = '0';
+    main.style.transform = 'translateY(20px)';
+    
+    requestAnimationFrame(() => {
+        main.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        main.style.opacity = '1';
+        main.style.transform = 'translateY(0)';
+    });
 }
 
 // 添加进度条
 function addProgressBar() {
+    const existingBar = document.querySelector('.sunflower-progress');
+    if (existingBar) return;
+    
     const progressBar = document.createElement('div');
     progressBar.className = 'sunflower-progress';
     document.body.appendChild(progressBar);
     
-    window.addEventListener('scroll', function() {
+    const updateProgress = () => {
         const scrollTop = window.pageYOffset;
         const docHeight = document.body.offsetHeight - window.innerHeight;
         const scrollPercent = (scrollTop / docHeight) * 100;
         progressBar.style.width = scrollPercent + '%';
-    });
+    };
+    
+    window.addEventListener('scroll', updateProgress);
+    updateProgress();
 }
 
 // 添加滚动效果
@@ -89,6 +108,92 @@ function addScrollEffects() {
         observer.observe(card);
     });
 }
+
+// 初始化页面效果
+function initializePageEffects(isPageRestore = false) {
+    // 清理和重新添加装饰元素
+    cleanupDecorations();
+    addSunflowerDecorations();
+    
+    // 添加其他效果
+    addProgressBar();
+    addScrollEffects();
+    addSunflowerButtonEffects();
+    addTooltips();
+    
+    // 仅在非页面恢复时添加加载动画
+    if (!isPageRestore) {
+        addPageLoadAnimation();
+    }
+}
+
+// 监听页面内容变化
+function observeContentChanges() {
+    const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+            if (mutation.type === 'childList') {
+                const hasNewContent = Array.from(mutation.addedNodes).some(node => 
+                    node.classList && (
+                        node.classList.contains('md-content') ||
+                        node.classList.contains('md-main__inner')
+                    )
+                );
+                
+                if (hasNewContent) {
+                    pageState.contentRestored = true;
+                    initializePageEffects(true);
+                    break;
+                }
+            }
+        }
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    return observer;
+}
+
+// 初始页面加载
+document.addEventListener('DOMContentLoaded', () => {
+    initializePageEffects();
+    const observer = observeContentChanges();
+    
+    // 清理函数
+    window.addEventListener('unload', () => {
+        observer.disconnect();
+    });
+});
+
+// Material for MkDocs 的页面切换事件
+document.addEventListener('DOMContentSwitch', () => {
+    pageState.contentRestored = false;
+    setTimeout(() => {
+        if (!pageState.contentRestored) {
+            initializePageEffects();
+        }
+    }, 50);
+});
+
+// 处理浏览器后退/前进
+window.addEventListener('popstate', () => {
+    pageState.contentRestored = false;
+    // 等待内容恢复
+    setTimeout(() => {
+        if (!pageState.contentRestored) {
+            initializePageEffects(true);
+        }
+    }, 50);
+});
+
+// 确保页面可见性变化时重新检查装饰元素
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && !pageState.decorationsInitialized) {
+        initializePageEffects(true);
+    }
+});
 
 // 添加向日葵按钮效果
 function addSunflowerButtonEffects() {
@@ -132,21 +237,6 @@ function addTooltips() {
     tooltipElements.forEach(element => {
         element.classList.add('sunflower-tooltip');
     });
-}
-
-// 添加页面加载动画
-function addPageLoadAnimation() {
-    const main = document.querySelector('.md-main');
-    if (main) {
-        main.style.opacity = '0';
-        main.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            main.style.transition = 'all 0.8s ease-out';
-            main.style.opacity = '1';
-            main.style.transform = 'translateY(0)';
-        }, 100);
-    }
 }
 
 // 添加向日葵徽章
