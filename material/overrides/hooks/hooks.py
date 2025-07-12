@@ -183,6 +183,13 @@ def process_section_page(markdown: str, page, config) -> str:
     if not section_key:
         return markdown
 
+    # 分离 frontmatter 和内容
+    parts = markdown.split('---', 2)
+    if len(parts) < 3:
+        return markdown
+    
+    frontmatter = parts[1]
+    
     # 获取所有博客文章
     posts = get_blog_posts(config)
     
@@ -198,12 +205,9 @@ def process_section_page(markdown: str, page, config) -> str:
     # 生成统计信息
     stats_html = generate_stats_html(section_posts)
     
-    # 重新生成整个页面内容
-    page_html = f"""---
-title: {meta.get('title', section_key)}
-description: {meta.get('description', f'{section_key}相关的文章列表')}
-section_key: {section_key}
----
+    # 生成新的内容，保留原始的 frontmatter
+    content = f"""---
+{frontmatter}---
 
 # 📚 {meta.get('title', section_key)}
 
@@ -224,7 +228,7 @@ section_key: {section_key}
 </div>
 """
     
-    return page_html
+    return content
 
 def get_blog_posts(config) -> List[Dict]:
     """获取所有博客文章"""

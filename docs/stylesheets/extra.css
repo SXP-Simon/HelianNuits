@@ -10,7 +10,9 @@
   --text-color: #2c3e50;
   --text-bold-color: var(--primary-color); /* 加粗文本颜色 */
   --bg-color: #ffffff;
-  --card-bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --card-border: rgba(255, 140, 0, 0.15);
+  --card-shadow: rgba(0, 0, 0, 0.1);
   --border-radius: 12px;
   --shadow: 0 8px 32px rgba(255, 140, 0, 0.15);
   --shadow-hover: 0 12px 40px rgba(255, 140, 0, 0.25);
@@ -22,6 +24,8 @@
   --text-color: #e1e1e1;
   --bg-color: var(--dark-bg);
   --card-bg: var(--night-color);
+  --card-border: rgba(255, 140, 0, 0.2);
+  --card-shadow: rgba(0, 0, 0, 0.3);
 }
 
 /* ===== 向日葵装饰元素 ===== */
@@ -158,23 +162,61 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* ===== 按钮样式 ===== */
-.md-typeset .md-button {
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: 0.5px;
-  background: var(--sunflower-gradient);
-  border: none;
-  color: white;
-  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+/* 按钮样式 */
+.md-button {
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    padding: 0.6em 1.2em !important;
+    border-radius: var(--border-radius) !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5em !important;
+    min-width: 120px !important;
+    color: var(--text-color) !important;
+    border: 2px solid var(--primary-color) !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 
-.md-typeset .md-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 140, 0, 0.4);
-  background: linear-gradient(135deg, #ff6b35 0%, #ffd700 50%, #ff8c00 100%);
+.md-button:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+.md-button--primary {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.md-button--primary:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+/* 确保按钮在暗色模式下也有良好的显示效果 */
+[data-md-color-scheme="slate"] .md-button {
+    color: var(--text-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+[data-md-color-scheme="slate"] .md-button:hover {
+    color: white !important;
+    background-color: var(--primary-color) !important;
+}
+
+[data-md-color-scheme="slate"] .md-button--primary {
+    color: white !important;
+    background-color: var(--primary-color) !important;
+}
+
+[data-md-color-scheme="slate"] .md-button--primary:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
 }
 
 /* ===== 代码块样式 ===== */
@@ -591,52 +633,89 @@
 }
 
 .post-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  padding: 1.5rem;
-  border: 2px solid transparent;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-}
-
-.post-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--sunflower-gradient);
-  transform: scaleX(0);
-  transition: transform 0.4s ease;
-}
-
-.post-card::after {
-  content: '🌻';
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 18px;
-  opacity: 0.3;
-  transition: all 0.3s ease;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--card-shadow);
 }
 
 .post-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--primary-color);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
 }
 
-.post-card:hover::before {
-  transform: scaleX(1);
+.post-card h2 {
+    margin: 0 0 1rem 0;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
-.post-card:hover::after {
-  opacity: 0.8;
-  transform: rotate(15deg);
+.post-card p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.post-card .metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--card-border);
+}
+
+.post-card .tag {
+    display: inline-block;
+    padding: 0.3em 0.8em;
+    background-color: rgba(255, 140, 0, 0.1);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.post-card .tag:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* 改进卡片中按钮的样式 */
+.post-card .read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5em 1em;
+    background-color: var(--primary-color);
+    color: white !important;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(255, 140, 0, 0.2);
+}
+
+.post-card .read-more:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+}
+
+/* 暗色模式适配 */
+[data-md-color-scheme="slate"] .post-card .read-more {
+    background-color: var(--primary-color);
+    color: white !important;
+}
+
+[data-md-color-scheme="slate"] .post-card .read-more:hover {
+    background-color: var(--secondary-color);
 }
 
 .post-header {
@@ -647,18 +726,17 @@
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .post-title a {
-  color: inherit;
+  color: var(--text-color);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .post-title a:hover {
-  color: var(--secondary-color);
-  text-shadow: 0 0 8px rgba(255, 140, 0, 0.3);
+  color: var(--primary-color);
 }
 
 .post-meta {
@@ -669,6 +747,7 @@
   color: var(--text-color);
   opacity: 0.8;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .post-date {
@@ -698,21 +777,22 @@
 .post-excerpt {
   color: var(--text-color);
   line-height: 1.6;
-  margin-bottom: 1.5rem;
-  opacity: 0.9;
+  margin: 1rem 0;
 }
 
 .post-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--card-border);
 }
 
 .post-author {
   font-size: 0.9rem;
-  color: var(--primary-color);
-  font-weight: 500;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .read-more {
