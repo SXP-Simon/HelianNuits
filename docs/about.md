@@ -11,10 +11,13 @@ description: 了解 Helian Nuits
 
 ## 基本信息
 
-- **姓名**: Helian Nuits (夜之向日葵)
-- **身份**: 大一学生
-- **专业**: 计算机相关
-- **爱好**: 编程、动漫、游戏、音乐
+- **姓名**: Helian Nuits (回归天空/夜之向日葵)
+
+- **身份**: 转专业学生
+
+- **专业**: 计算机科学与技术
+
+- **爱好**: 兴趣学习、动漫、游戏、音乐
 
 </div>
 
@@ -22,8 +25,15 @@ description: 了解 Helian Nuits
 
 ## 个人简介
 
-二次元爱好者，喜欢看动漫，玩游戏，听音乐。喜欢编程，热爱开源。  
-希望能够在大学期间学到更多的知识，提升自己的编程能力。
+南昌大学超算俱乐部成员 | 华科开放原子俱乐部成员
+
+正在打造 NCU INN STACK 计算机学习交流平台
+
+二次元爱好者，喜欢看动漫，玩游戏，听音乐。
+
+希望成为技术宅，正在通过学会编程了解方方面面的技术，热爱开源。  
+
+希望能够在大学期间学到更多的知识技术，开阔自己的视野。
 
 > 此曲为一切不合时宜者而作
 
@@ -37,10 +47,10 @@ description: 了解 Helian Nuits
 
 ### 🎮 兴趣爱好
 
-- **动漫**: 四月是你的谎言、近月少女的礼仪等
-- **游戏**: 视觉小说
-- **音乐**: 古典音乐、动漫音乐、游戏音乐
-- **编程**: Python、Web开发、开源项目
+- **二次元**: 轻小说、轻百合、GalGame、音乐
+- **游戏**: 幻想野牛打职业
+- **音乐**: 纯音乐、动漫音乐、游戏音乐
+- **技术**: 人工智能、计算机科学、Web开发、开源项目
 
 </div>
 
@@ -48,9 +58,9 @@ description: 了解 Helian Nuits
 
 ### 🛠️ 技术栈
 
-- **编程语言**: Python, JavaScript, HTML/CSS
-- **开发环境**: VS Code, Git, Docker
-- **其他技能**: Markdown, LaTeX, Typst
+- **编程语言**: 希望新一年尝试 Go, Rust, TypeScript 等
+- **开发环境**: VS Code, Cursor, Git, Docker 等
+- **其他技能**: Canva, Markdown, LaTeX, Typst
 
 </div>
 
@@ -109,11 +119,18 @@ description: 了解 Helian Nuits
 
 ### 🌟 座右铭
 
-> 夜晚的向日葵，存在的理由又是什么呢？
-
-> 命中注定要朝向阳光生长，那夜晚的向日葵们，岂不是很辛苦？
-
-> 哈哈，总能忍过去。没有太阳，有一点点星光，一点点希望，活着，就足够了吧。
+> <p align="left"><em>
+>     何か成す者とは歩み続ける愚者である、成せぬ者とは歩めを止めた賢者である
+>     <br>
+>     成一事者，矢志不渝之愚者；毁一事者，停滞不前之贤者
+>     <br>
+>     Feats would await those who daftly enough never cease to forward,
+>     <br>
+>     folds always come around when you are wise enough to never attempt.
+> </em></p>
+> <p align="right">
+>     &mdash;&mdash;&mdash;《ロクでなし魔術講師と禁忌教典》
+> </p>
 
 </div>
 
