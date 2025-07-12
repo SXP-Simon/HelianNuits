@@ -284,95 +284,70 @@
 
 /* ===== 表格样式 ===== */
 .md-typeset table {
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  border: none;
-  background: var(--bg-color);
-  margin: 2rem 0;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 1em 0;
+    background: var(--bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .md-typeset table th {
-  background: var(--bg-color);
-  color: var(--primary-color);
-  font-weight: 700;
-  font-size: 1.1rem;
-  padding: 1.2rem 1.5rem;
-  text-align: left;
-  position: relative;
-  border: none;
-}
-
-.md-typeset table tr:first-child th {
-  font-size: 1.2rem;
-  background: var(--bg-color);
-  color: var(--primary-color);
-  letter-spacing: 0.02em;
-  border: none;
-}
-
-.md-typeset table tr:first-child {
-  position: relative;
-  border-bottom: 3px solid var(--primary-color);
+    padding: 0.8em 1em;
+    background: var(--night-gradient);
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    border: none;
+    font-size: 0.85rem;
 }
 
 .md-typeset table td {
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid rgba(255, 140, 0, 0.1);
-  color: var(--text-color);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.md-typeset table tr:last-child td {
-  border-bottom: none;
+    padding: 0.6em 1em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    vertical-align: middle;
+    font-size: 0.85rem;
 }
 
 .md-typeset table tr:hover td {
-  background: rgba(255, 140, 0, 0.03);
+    background: rgba(255, 140, 0, 0.05);
 }
 
-/* 暗色模式适配 */
+/* 暗色模式表格样式 */
 [data-md-color-scheme="slate"] .md-typeset table {
-  background: var(--card-bg);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    background: var(--card-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 [data-md-color-scheme="slate"] .md-typeset table th {
-  background: var(--card-bg);
-  color: var(--accent-color);
-}
-
-[data-md-color-scheme="slate"] .md-typeset table tr:first-child {
-  border-bottom: 3px solid var(--accent-color);
-}
-
-[data-md-color-scheme="slate"] .md-typeset table tr:first-child th {
-  background: var(--card-bg);
-  color: var(--accent-color);
+    background: var(--night-gradient);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 [data-md-color-scheme="slate"] .md-typeset table td {
-  border-color: rgba(255, 140, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 [data-md-color-scheme="slate"] .md-typeset table tr:hover td {
-  background: rgba(255, 140, 0, 0.08);
+    background: rgba(255, 140, 0, 0.1);
 }
 
-/* 表格响应式优化 */
+/* 移动端表格响应式 */
 @media (max-width: 768px) {
-  .md-typeset table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .md-typeset table th,
-  .md-typeset table td {
-    padding: 1rem;
-    min-width: 160px;
-  }
+    .md-typeset table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .md-typeset table th,
+    .md-typeset table td {
+        white-space: nowrap;
+        min-width: 120px;
+    }
 }
 
 /* ===== 标签样式 ===== */
@@ -535,17 +510,17 @@
 
 .md-typeset ol > li {
   counter-increment: item;
-  display: flex;
-  align-items: baseline;
   margin: 0.8rem 0;
+  padding-left: 2rem;
+  position: relative;
 }
 
 .md-typeset ol > li::before {
   content: counter(item) ".";
+  position: absolute;
+  left: 0;
   font-weight: 700;
   color: var(--primary-color);
-  margin-right: 0.8rem;
-  font-size: 1rem;
 }
 
 /* 自定义无序列表样式 */
@@ -554,17 +529,16 @@
 }
 
 .md-typeset ul > li {
-  display: flex;
-  align-items: baseline;
-  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
 }
 
 .md-typeset ul > li::before {
   content: "•";
+  position: absolute;
+  left: 0;
   color: var(--primary-color);
   font-weight: bold;
-  font-size: 1.2em;
-  margin-right: 0.8rem;
 }
 
 /* 嵌套列表样式 */
@@ -572,15 +546,23 @@
 .md-typeset ul ol,
 .md-typeset ol ul,
 .md-typeset ol ol {
-  margin: 0.5rem 0 0.5rem 1.5rem;
+  margin: 0.5rem 0;
 }
 
-.md-typeset ul ul > li::before {
+.md-typeset ul ul > li,
+.md-typeset ol ul > li {
+  padding-left: 1.5rem;
+}
+
+.md-typeset ul ul > li::before,
+.md-typeset ol ul > li::before {
   content: "◦";
   color: var(--secondary-color);
+  left: 0.2rem;
 }
 
-.md-typeset ul ul ul > li::before {
+.md-typeset ul ul ul > li::before,
+.md-typeset ol ul ul > li::before {
   content: "▪";
   color: var(--accent-color);
 }
@@ -588,7 +570,6 @@
 /* 列表项内容样式 */
 .md-typeset li p {
   margin: 0;
-  display: inline;
 }
 
 .md-typeset li code {
