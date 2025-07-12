@@ -9,6 +9,30 @@ description: 按分类浏览的文章列表
 
 <div class="category-section" markdown>
 
+## OS
+
+<div class="category-posts" markdown>
+
+
+<div class="category-post-card" markdown>
+<div class="post-info">
+  <h4 class="post-title">
+    <a href="/HelianNuits/blog/posts/jyyos-ostep-startup/">jyyos-ostep-startup</a>
+  </h4>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月12日</span>
+    <span class="tag-list">🏷️ 操作系统</span>
+  </div>
+  <div class="post-excerpt">
+    startup
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="category-section" markdown>
+
 ## 动漫游戏
 
 <div class="category-posts" markdown>
@@ -192,6 +216,7 @@ description: 按分类浏览的文章列表
 
 ## 📊 分类统计
 
+- **OS**: 1 篇
 - **动漫游戏**: 3 篇
 - **技术分享**: 3 篇
 - **杂谈**: 4 篇

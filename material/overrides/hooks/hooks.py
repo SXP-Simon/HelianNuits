@@ -23,6 +23,7 @@ from datetime import datetime
 from pathlib import Path
 from collections import defaultdict
 from ruamel.yaml import YAML
+from typing import Dict, List
 
 # ==================== 全局配置常量 ====================
 
@@ -157,30 +158,189 @@ def on_files(files, config):
     print("=== on_files钩子执行完成 ===")
     return files
 
-def on_page_markdown(markdown, page, config, files):
-    """
-    在生成 Markdown 内容时触发
+def on_page_markdown(markdown: str, **kwargs) -> str:
+    """处理页面 Markdown 内容"""
+    if not markdown:
+        return markdown
     
-    为博客文章自动添加发布日期信息。
+    # 获取页面配置
+    config = kwargs.get('config', {})
+    page = kwargs.get('page', None)
+    if not page:
+        return markdown
+
+    # 处理分区页面
+    if page.file.src_path.startswith('blog/sections/'):
+        return process_section_page(markdown, page, config)
     
-    Args:
-        markdown (str): 页面的 Markdown 内容
-        page: 页面对象
-        config: MkDocs 配置对象
-        files: 文件对象
-        
-    Returns:
-        str: 处理后的 Markdown 内容
-    """
-    # 检查是否为博客文章页面（排除博客首页）
-    if page.file.src_path.replace('\\', '/').startswith('blog/') and page.file.src_path != 'blog/index.md':
-        # 检查是否已经包含发布日期
-        if not markdown.startswith('**发布日期：'):
-            # 获取当前日期
-            today = datetime.now().strftime('%Y-%m-%d')
-            # 在文章顶部插入发布日期
-            markdown = f"**发布日期：{today}**\n\n" + markdown
     return markdown
+
+def process_section_page(markdown: str, page, config) -> str:
+    """处理分区页面内容"""
+    # 获取页面元数据
+    meta = page.meta
+    section_key = meta.get('section_key', '')
+    if not section_key:
+        return markdown
+
+    # 获取所有博客文章
+    posts = get_blog_posts(config)
+    
+    # 过滤该分区的文章
+    section_posts = [post for post in posts if section_key in post.get('categories', [])]
+    
+    # 按日期排序
+    section_posts.sort(key=lambda x: x.get('date', ''), reverse=True)
+    
+    # 生成文章列表 HTML
+    posts_html = generate_posts_html(section_posts)
+    
+    # 生成统计信息
+    stats_html = generate_stats_html(section_posts)
+    
+    # 重新生成整个页面内容
+    page_html = f"""---
+title: {meta.get('title', section_key)}
+description: {meta.get('description', f'{section_key}相关的文章列表')}
+section_key: {section_key}
+---
+
+# 📚 {meta.get('title', section_key)}
+
+<div class="section-posts-grid" markdown>
+
+{posts_html}
+
+</div>
+
+---
+
+<div class="section-info" markdown>
+
+## 📊 分区统计
+
+{stats_html}
+
+</div>
+"""
+    
+    return page_html
+
+def get_blog_posts(config) -> List[Dict]:
+    """获取所有博客文章"""
+    posts = []
+    posts_dir = os.path.join(config['docs_dir'], 'blog/posts')
+    
+    if not os.path.exists(posts_dir):
+        return posts
+        
+    for filename in os.listdir(posts_dir):
+        if not filename.endswith('.md'):
+            continue
+            
+        filepath = os.path.join(posts_dir, filename)
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        # 解析文章元数据
+        try:
+            meta = yaml.safe_load(content.split('---')[1])
+        except:
+            continue
+            
+        if not meta:
+            continue
+            
+        meta['filename'] = filename
+        posts.append(meta)
+        
+    return posts
+
+def generate_posts_html(posts: List[Dict]) -> str:
+    """生成文章列表 HTML"""
+    html = []
+    
+    for post in posts:
+        title = post.get('title', '')
+        date = post.get('date', '')
+        author = post.get('author', 'Helian Nuits')
+        description = post.get('description', '暂无描述')
+        categories = post.get('categories', [])
+        tags = post.get('tags', [])
+        
+        # 格式化日期
+        if isinstance(date, datetime):
+            date = date.strftime('%Y年%m月%d日')
+        elif isinstance(date, str) and len(date) == 10:
+            try:
+                date = datetime.strptime(date, '%Y-%m-%d').strftime('%Y年%m月%d日')
+            except:
+                pass
+        
+        # 生成文章卡片
+        html.append(f'''
+<div class="post-card" markdown>
+<div class="post-header">
+  <h3 class="post-title">
+    <a href="/HelianNuits/blog/posts/{post['filename'][:-3]}/">{title}</a>
+  </h3>
+  <div class="post-meta">
+    <span class="post-date">📅 {date}</span>
+    <span class="category-tag">{', '.join(categories)}</span>
+    <span class="tag-list">🏷️ {', '.join(tags)}</span>
+  </div>
+</div>
+<div class="post-excerpt">
+  {description}
+</div>
+<div class="post-footer">
+  <span class="post-author">👤 {author}</span>
+  <a href="/HelianNuits/blog/posts/{post['filename'][:-3]}/" class="read-more">阅读全文 →</a>
+</div>
+</div>
+''')
+    
+    return '\n'.join(html)
+
+def generate_stats_html(posts: List[Dict]) -> str:
+    """生成统计信息 HTML"""
+    # 获取最近更新日期
+    latest_date = None
+    for post in posts:
+        date = post.get('date', '')
+        if isinstance(date, datetime):
+            if latest_date is None or date > latest_date:
+                latest_date = date
+        elif isinstance(date, str) and len(date) == 10:
+            try:
+                date = datetime.strptime(date, '%Y-%m-%d')
+                if latest_date is None or date > latest_date:
+                    latest_date = date
+            except:
+                continue
+    
+    if latest_date:
+        latest_date = latest_date.strftime('%Y年%m月%d日')
+    else:
+        latest_date = '暂无更新'
+    
+    # 获取所有标签
+    all_tags = []
+    for post in posts:
+        all_tags.extend(post.get('tags', []))
+    tag_count = {}
+    for tag in all_tags:
+        tag_count[tag] = tag_count.get(tag, 0) + 1
+    
+    # 按出现次数排序标签
+    main_tags = sorted(tag_count.items(), key=lambda x: x[1], reverse=True)[:5]
+    main_tags = [tag for tag, _ in main_tags]
+    
+    return f'''
+- **文章总数**: {len(posts)} 篇
+- **最近更新**: {latest_date}
+- **主要标签**: {', '.join(main_tags)}
+'''
 
 def on_post_build(config):
     """
@@ -205,12 +365,14 @@ def generate_blog_pages(config):
     - 最新文章列表页面
     - 时间归档页面
     - 分类浏览页面
+    - 自定义分区页面
     
     Args:
         config: MkDocs 配置对象
     """
     docs_dir = Path(config['docs_dir'])
     posts_dir = docs_dir / 'blog' / 'posts'
+    sections_dir = docs_dir / 'blog' / 'sections'
     
     # 检查文章目录是否存在
     if not posts_dir.exists():
@@ -235,7 +397,12 @@ def generate_blog_pages(config):
     generate_archive_page(docs_dir, posts)
     generate_categories_page(docs_dir, posts)
     
-    print("博客构建成功！文章列表和归档已自动生成。")
+    # 生成分区页面
+    if sections_dir.exists():
+        for section_file in sections_dir.glob('*.md'):
+            generate_section_page(section_file, posts)
+    
+    print("博客构建成功！文章列表、归档和分区页面已自动生成。")
 
 def extract_post_info(post_file):
     """
@@ -546,6 +713,115 @@ description: 按分类浏览的文章列表
     # 写入文件
     with open(blog_dir / 'categories.md', 'w', encoding='utf-8') as f:
         f.write(categories_content)
+
+def generate_section_page(section_file, posts):
+    """
+    生成分区页面
+    
+    Args:
+        section_file (Path): 分区页面文件路径
+        posts (list): 所有文章信息列表
+    """
+    try:
+        # 读取分区页面配置
+        with open(section_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # 提取 front matter
+        front_matter_match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+        if not front_matter_match:
+            return
+        
+        meta = yaml.safe_load(front_matter_match.group(1))
+        section_key = meta.get('section_key', '')
+        if not section_key:
+            return
+        
+        # 过滤该分区的文章
+        section_posts = [post for post in posts if section_key in post.get('categories', [])]
+        section_posts.sort(key=lambda x: x['date'], reverse=True)
+        
+        # 生成文章列表 HTML
+        posts_html = ""
+        for post in section_posts:
+            date_str = post['date'].strftime('%Y年%m月%d日')
+            
+            # 生成标签 HTML
+            tags_html = ""
+            if post['tags']:
+                tags_html = f'<span class="tag-list">🏷️ {", ".join(post["tags"])}</span>'
+            
+            url = get_post_url(post)
+            posts_html += f'''
+<div class="post-card" markdown>
+<div class="post-header">
+  <h3 class="post-title">
+    <a href="{url}">{post['title']}</a>
+  </h3>
+  <div class="post-meta">
+    <span class="post-date">📅 {date_str}</span>
+    <span class="category-tag">{", ".join(post['categories'])}</span>
+    {tags_html}
+  </div>
+</div>
+<div class="post-excerpt">
+  {post['description'] or '暂无描述'}
+</div>
+<div class="post-footer">
+  <span class="post-author">👤 {post['author']}</span>
+  <a href="{url}" class="read-more">阅读全文 →</a>
+</div>
+</div>
+'''
+        
+        # 生成统计信息
+        latest_date = max([post['date'] for post in section_posts], default=None)
+        latest_date_str = latest_date.strftime('%Y年%m月%d日') if latest_date else '暂无更新'
+        
+        # 获取主要标签
+        all_tags = []
+        for post in section_posts:
+            all_tags.extend(post['tags'])
+        tag_count = {}
+        for tag in all_tags:
+            tag_count[tag] = tag_count.get(tag, 0) + 1
+        main_tags = sorted(tag_count.items(), key=lambda x: x[1], reverse=True)[:5]
+        main_tags = [tag for tag, _ in main_tags]
+        
+        # 生成完整的分区页面内容
+        section_content = f'''---
+title: {meta.get('title', section_key)}
+description: {meta.get('description', f'{section_key}相关的文章列表')}
+section_key: {section_key}
+---
+
+# 📚 {meta.get('title', section_key)}
+
+<div class="section-posts-grid" markdown>
+
+{posts_html}
+
+</div>
+
+---
+
+<div class="section-info" markdown>
+
+## 📊 分区统计
+
+- **文章总数**: {len(section_posts)} 篇
+- **最近更新**: {latest_date_str}
+- **主要标签**: {', '.join(main_tags)}
+
+</div>
+'''
+        
+        # 写入文件
+        with open(section_file, 'w', encoding='utf-8') as f:
+            f.write(section_content)
+            
+    except Exception as e:
+        print(f"处理分区页面 {section_file} 时出错: {e}")
 
 # ==================== 导航配置更新函数 ====================
 

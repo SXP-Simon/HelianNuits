@@ -124,6 +124,7 @@ nav:
   - 文章列表:
     - 25暑假初期学习规划: blog/posts/25暑假初期学习规划.md
     - ContextMenuForWindows11: blog/posts/ContextMenuForWindows11.md
+    - jyyos-ostep-startup: blog/posts/jyyos-ostep-startup.md
     - ncu-inn-stack: blog/posts/ncu-inn-stack.md
     - sample_cn: blog/posts/sample_cn.md
     - 【Narcissus】一段灿烂的故事: blog/posts/【Narcissus】一段灿烂的故事.md
@@ -132,6 +133,7 @@ nav:
     - 科目一启动: blog/posts/科目一启动.md
     - 竭尽全力成为矢志不渝之愚者: blog/posts/竭尽全力成为矢志不渝之愚者.md
     - 近月2官中来袭: blog/posts/近月2官中来袭.md
+- OS: blog/sections/OS.md
 - 分类: blog/categories.md
 - 归档: blog/archive.md
 

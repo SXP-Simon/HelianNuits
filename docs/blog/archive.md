@@ -17,6 +17,10 @@ description: 按时间归档的博客文章
 
 
 <div class="archive-post" markdown>
+- **07月12日** - [jyyos-ostep-startup](/HelianNuits/blog/posts/jyyos-ostep-startup/) <span class="category-tag">OS</span>
+</div>
+
+<div class="archive-post" markdown>
 - **07月10日** - [科目一启动](/HelianNuits/blog/posts/科目一启动/) <span class="category-tag">杂谈</span>
 </div>
 
@@ -79,8 +83,8 @@ description: 按时间归档的博客文章
 
 ## 📊 统计信息
 
-- **总文章数**: 10 篇
+- **总文章数**: 11 篇
 - **最早文章**: 2025年01月18日
-- **最新文章**: 2025年07月10日
+- **最新文章**: 2025年07月12日
 
 </div>

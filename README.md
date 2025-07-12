@@ -8,6 +8,7 @@
 - **多语言支持**：中文/英文双语支持
 - **现代化 UI**：基于 Material Design 的美观界面
 - **响应式设计**：完美适配各种设备
+- **自定义分区**：支持创建自定义分区，展示特定类型的文章
 
 ## 📁 项目结构
 
@@ -16,6 +17,7 @@ HelianNuits/
 ├── docs/                    # 文档目录
 │   ├── blog/               # 博客相关
 │   │   ├── posts/          # 博客文章（手动添加）
+│   │   ├── sections/       # 自定义分区（手动添加）
 │   │   ├── index.md        # 博客首页（自动生成）
 │   │   ├── archive.md      # 时间归档（自动生成）
 │   │   └── categories.md   # 分类页面（自动生成）
@@ -54,7 +56,47 @@ tags:
 
 3. 保存文件，系统会自动更新首页、归档和分类页面
 
-### 4. 部署
+### 4. 创建新分区
+
+1. 在 `docs/blog/sections/` 目录下创建新的 Markdown 文件（如 `tech-tutorials.md`）
+2. 添加分区配置：
+
+```markdown
+---
+title: 技术教程
+description: 技术相关的教程文章
+section_key: 技术分享
+---
+
+# 📚 技术教程
+
+<div class="section-posts-grid" markdown>
+
+<!-- 这里将由 Python 钩子自动填充该分区的文章列表 -->
+
+</div>
+
+---
+
+<div class="section-info" markdown>
+
+## 📊 分区统计
+
+<!-- 这里将由 Python 钩子自动填充统计信息 -->
+
+</div>
+```
+
+3. 在 `mkdocs.yml` 中添加分区导航：
+
+```yaml
+nav:
+  - 技术教程: blog/sections/tech-tutorials.md
+```
+
+4. 确保文章的 Front Matter 中的 `categories` 包含对应的分区关键字（如 `技术分享`）
+
+### 5. 部署
 
 ```bash
 # 构建网站
@@ -76,6 +118,7 @@ mkdocs gh-deploy
 ### 自定义功能
 
 - **自动化归档**: 通过 `hooks.py` 自动生成归档和分类页面
+- **分区管理**: 支持创建自定义分区，自动聚合特定类型的文章
 
 ## 📝 写作指南
 
@@ -91,7 +134,7 @@ mkdocs gh-deploy
 |------|------|------|------|
 | title | string | 是 | 文章标题 |
 | date | string | 是 | 发布日期 (YYYY-MM-DD) |
-| categories | array | 否 | 分类列表 |
+| categories | array | 否 | 分类列表（用于分区和分类） |
 | tags | array | 否 | 标签列表 |
 | description | string | 否 | 文章描述 |
 | author | string | 否 | 作者名称 |
