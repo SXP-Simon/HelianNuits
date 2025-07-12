@@ -17,6 +17,14 @@ description: 按时间归档的博客文章
 
 
 <div class="archive-post" markdown>
+- **07月13日** - [JYYOS-01 | 【AI总结】AI时代下需要的视野](/HelianNuits/blog/posts/JYYOS-01-AI时代下需要的视野/) <span class="category-tag">OS</span>
+</div>
+
+<div class="archive-post" markdown>
+- **07月13日** - [OSTEP-01 | “操作系统导游手册”](/HelianNuits/blog/posts/OSTEP-01-操作系统综述/) <span class="category-tag">OS</span>
+</div>
+
+<div class="archive-post" markdown>
 - **07月12日** - [jyyos-ostep-startup](/HelianNuits/blog/posts/jyyos-ostep-startup/) <span class="category-tag">OS</span>
 </div>
 
@@ -83,8 +91,8 @@ description: 按时间归档的博客文章
 
 ## 📊 统计信息
 
-- **总文章数**: 11 篇
+- **总文章数**: 13 篇
 - **最早文章**: 2025年01月18日
-- **最新文章**: 2025年07月12日
+- **最新文章**: 2025年07月13日
 
 </div>

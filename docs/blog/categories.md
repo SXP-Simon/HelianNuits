@@ -17,6 +17,36 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
+    <a href="/HelianNuits/blog/posts/JYYOS-01-AI时代下需要的视野/">JYYOS-01 | 【AI总结】AI时代下需要的视野</a>
+  </h4>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月13日</span>
+    <span class="tag-list">🏷️ 操作系统, AI时代, JYYOS</span>
+  </div>
+  <div class="post-excerpt">
+    AI 时代的操作系统：在物理现实、抽象裂缝与数学理想之间。——南京大学 JYY 课程的四重视野与终极问题
+  </div>
+</div>
+</div>
+
+<div class="category-post-card" markdown>
+<div class="post-info">
+  <h4 class="post-title">
+    <a href="/HelianNuits/blog/posts/OSTEP-01-操作系统综述/">OSTEP-01 | “操作系统导游手册”</a>
+  </h4>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月13日</span>
+    <span class="tag-list">🏷️ 操作系统, OSTEP, 综述</span>
+  </div>
+  <div class="post-excerpt">
+    操作系统 = 虚拟化（资源假象） + 并发（多任务管理） + 持久性（数据安全）+ …… ，而本书是你理解这三者的“导游手册”。
+  </div>
+</div>
+</div>
+
+<div class="category-post-card" markdown>
+<div class="post-info">
+  <h4 class="post-title">
     <a href="/HelianNuits/blog/posts/jyyos-ostep-startup/">jyyos-ostep-startup</a>
   </h4>
   <div class="post-meta">
@@ -216,7 +246,7 @@ description: 按分类浏览的文章列表
 
 ## 📊 分类统计
 
-- **OS**: 1 篇
+- **OS**: 3 篇
 - **动漫游戏**: 3 篇
 - **技术分享**: 3 篇
 - **杂谈**: 4 篇

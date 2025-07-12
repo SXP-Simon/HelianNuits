@@ -89,7 +89,6 @@
 .md-typeset .card:hover::before {
   transform: scaleX(1);
 }
-
 .md-typeset .card:hover::after {
   opacity: 0.8;
   transform: rotate(15deg);

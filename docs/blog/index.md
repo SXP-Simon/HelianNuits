@@ -11,6 +11,44 @@ description: 最新博客文章列表
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
+    <a href="/HelianNuits/blog/posts/JYYOS-01-AI时代下需要的视野/">JYYOS-01 | 【AI总结】AI时代下需要的视野</a>
+  </h3>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月13日</span>
+    <span class="category-tag">OS</span>
+  </div>
+</div>
+<div class="post-excerpt">
+  AI 时代的操作系统：在物理现实、抽象裂缝与数学理想之间。——南京大学 JYY 课程的四重视野与终极问题
+</div>
+<div class="post-footer">
+  <span class="post-author">👤 Helian Nuits</span>
+  <a href="/HelianNuits/blog/posts/JYYOS-01-AI时代下需要的视野/" class="read-more">阅读全文 →</a>
+</div>
+</div>
+
+<div class="post-card" markdown>
+<div class="post-header">
+  <h3 class="post-title">
+    <a href="/HelianNuits/blog/posts/OSTEP-01-操作系统综述/">OSTEP-01 | “操作系统导游手册”</a>
+  </h3>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月13日</span>
+    <span class="category-tag">OS</span>
+  </div>
+</div>
+<div class="post-excerpt">
+  操作系统 = 虚拟化（资源假象） + 并发（多任务管理） + 持久性（数据安全）+ …… ，而本书是你理解这三者的“导游手册”。
+</div>
+<div class="post-footer">
+  <span class="post-author">👤 Helian Nuits</span>
+  <a href="/HelianNuits/blog/posts/OSTEP-01-操作系统综述/" class="read-more">阅读全文 →</a>
+</div>
+</div>
+
+<div class="post-card" markdown>
+<div class="post-header">
+  <h3 class="post-title">
     <a href="/HelianNuits/blog/posts/jyyos-ostep-startup/">jyyos-ostep-startup</a>
   </h3>
   <div class="post-meta">
@@ -157,44 +195,6 @@ description: 最新博客文章列表
 <div class="post-footer">
   <span class="post-author">👤 Helian Nuits</span>
   <a href="/HelianNuits/blog/posts/ContextMenuForWindows11/" class="read-more">阅读全文 →</a>
-</div>
-</div>
-
-<div class="post-card" markdown>
-<div class="post-header">
-  <h3 class="post-title">
-    <a href="/HelianNuits/blog/posts/sample_cn/">Lorem ipsum</a>
-  </h3>
-  <div class="post-meta">
-    <span class="post-date">📅 2025年01月20日</span>
-    <span class="category-tag">技术分享</span>
-  </div>
-</div>
-<div class="post-excerpt">
-  这个 block 块是 YAML front matters
-</div>
-<div class="post-footer">
-  <span class="post-author">👤 SprInec</span>
-  <a href="/HelianNuits/blog/posts/sample_cn/" class="read-more">阅读全文 →</a>
-</div>
-</div>
-
-<div class="post-card" markdown>
-<div class="post-header">
-  <h3 class="post-title">
-    <a href="/HelianNuits/blog/posts/四月是你的谎言/">四月是你的谎言</a>
-  </h3>
-  <div class="post-meta">
-    <span class="post-date">📅 2025年01月19日</span>
-    <span class="category-tag">动漫游戏</span>
-  </div>
-</div>
-<div class="post-excerpt">
-  暂无描述
-</div>
-<div class="post-footer">
-  <span class="post-author">👤 Helian Nuits</span>
-  <a href="/HelianNuits/blog/posts/四月是你的谎言/" class="read-more">阅读全文 →</a>
 </div>
 </div>
 

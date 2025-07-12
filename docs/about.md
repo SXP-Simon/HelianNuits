@@ -27,7 +27,7 @@ description: 了解 Helian Nuits
 
 南昌大学超算俱乐部成员 | 华科开放原子俱乐部成员
 
-正在打造 NCU INN STACK 计算机学习交流平台
+正在打造 **NCU INN STACK** 计算机学习交流平台
 
 二次元爱好者，喜欢看动漫，玩游戏，听音乐。
 
@@ -48,7 +48,6 @@ description: 了解 Helian Nuits
 ### 🎮 兴趣爱好
 
 - **二次元**: 轻小说、轻百合、GalGame、音乐
-- **游戏**: 幻想野牛打职业
 - **音乐**: 纯音乐、动漫音乐、游戏音乐
 - **技术**: 人工智能、计算机科学、Web开发、开源项目
 
@@ -119,17 +118,17 @@ description: 了解 Helian Nuits
 
 ### 🌟 座右铭
 
-> <p align="left"><em>
->     何か成す者とは歩み続ける愚者である、成せぬ者とは歩めを止めた賢者である
+> <p align="left" style="font-family: 'Noto Serif JP', serif; line-height: 2; background: linear-gradient(135deg, rgba(255, 140, 0, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%); padding: 2rem; border-radius: 12px; border-left: 4px solid #ff8c00; margin: 2rem 0; position: relative;"><em style="font-style: normal;">
+>     <span style="display: block; font-size: 1.2rem; margin-bottom: 1rem; color: #ff8c00;">何か成す者とは歩み続ける愚者である、成せぬ者とは歩めを止めた賢者である</span>
 >     <br>
->     成一事者，矢志不渝之愚者；毁一事者，停滞不前之贤者
+>     <span style="display: block; font-size: 1.1rem; margin-bottom: 1rem; color: #ff8c00;">成一事者，矢志不渝之愚者；毁一事者，停滞不前之贤者</span>
 >     <br>
->     Feats would await those who daftly enough never cease to forward,
+>     <span style="display: block; font-size: 1rem; font-style: italic; color: #ff8c00;">Feats would await those who daftly enough never cease to forward,</span>
 >     <br>
->     folds always come around when you are wise enough to never attempt.
+>     <span style="display: block; font-size: 1rem; font-style: italic; color: #ff8c00;">folds always come around when you are wise enough to never attempt.</span>
 > </em></p>
-> <p align="right">
->     &mdash;&mdash;&mdash;《ロクでなし魔術講師と禁忌教典》
+> <p align="right" style="font-family: 'Noto Serif JP', serif; color: #ff8c00; margin-top: -1rem; font-size: 0.9rem;">
+>     &mdash;&mdash;&mdash;<span style="font-style: italic;">《ロクでなし魔術講師と禁忌教典》</span>
 > </p>
 
 </div>
