@@ -286,27 +286,93 @@
 .md-typeset table {
   border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: var(--shadow);
-  border: 2px solid rgba(255, 140, 0, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: none;
+  background: var(--bg-color);
+  margin: 2rem 0;
 }
 
 .md-typeset table th {
-  background: var(--sunflower-gradient);
-  color: white;
+  background: var(--bg-color);
+  color: var(--primary-color);
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  padding: 1rem;
+  font-size: 1.1rem;
+  padding: 1.2rem 1.5rem;
+  text-align: left;
+  position: relative;
+  border: none;
+}
+
+.md-typeset table tr:first-child th {
+  font-size: 1.2rem;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  letter-spacing: 0.02em;
+  border: none;
+}
+
+.md-typeset table tr:first-child {
+  position: relative;
+  border-bottom: 3px solid var(--primary-color);
 }
 
 .md-typeset table td {
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid rgba(255, 140, 0, 0.1);
-  transition: background 0.3s ease;
-  padding: 0.8rem 1rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.md-typeset table tr:last-child td {
+  border-bottom: none;
 }
 
 .md-typeset table tr:hover td {
-  background: linear-gradient(135deg, rgba(255, 140, 0, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+  background: rgba(255, 140, 0, 0.03);
+}
+
+/* 暗色模式适配 */
+[data-md-color-scheme="slate"] .md-typeset table {
+  background: var(--card-bg);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table th {
+  background: var(--card-bg);
+  color: var(--accent-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table tr:first-child {
+  border-bottom: 3px solid var(--accent-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table tr:first-child th {
+  background: var(--card-bg);
+  color: var(--accent-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table td {
+  border-color: rgba(255, 140, 0, 0.15);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table tr:hover td {
+  background: rgba(255, 140, 0, 0.08);
+}
+
+/* 表格响应式优化 */
+@media (max-width: 768px) {
+  .md-typeset table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .md-typeset table th,
+  .md-typeset table td {
+    padding: 1rem;
+    min-width: 160px;
+  }
 }
 
 /* ===== 标签样式 ===== */
