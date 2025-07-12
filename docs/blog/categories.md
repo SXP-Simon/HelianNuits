@@ -21,10 +21,10 @@ description: 按分类浏览的文章列表
   </h4>
   <div class="post-meta">
     <span class="post-date">📅 2025年07月12日</span>
-    <span class="tag-list">🏷️ 操作系统</span>
+    <span class="tag-list">🏷️ 操作系统, 计划说明</span>
   </div>
   <div class="post-excerpt">
-    startup
+    NJU JYY OS 与 OSTEP 长期博客更新计划
   </div>
 </div>
 </div>

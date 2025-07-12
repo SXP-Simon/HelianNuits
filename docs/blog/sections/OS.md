@@ -17,11 +17,11 @@ section_key: OS
   <div class="post-meta">
     <span class="post-date">📅 2025年07月12日</span>
     <span class="category-tag">OS</span>
-    <span class="tag-list">🏷️ 操作系统</span>
+    <span class="tag-list">🏷️ 操作系统, 计划说明</span>
   </div>
 </div>
 <div class="post-excerpt">
-  startup
+  NJU JYY OS 与 OSTEP 长期博客更新计划
 </div>
 <div class="post-footer">
   <span class="post-author">👤 Helian Nuits</span>
@@ -40,6 +40,6 @@ section_key: OS
 
 - **文章总数**: 1 篇
 - **最近更新**: 2025年07月12日
-- **主要标签**: 操作系统
+- **主要标签**: 操作系统, 计划说明
 
 </div>

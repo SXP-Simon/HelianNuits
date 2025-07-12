@@ -19,7 +19,7 @@ description: 最新博客文章列表
   </div>
 </div>
 <div class="post-excerpt">
-  startup
+  NJU JYY OS 与 OSTEP 长期博客更新计划
 </div>
 <div class="post-footer">
   <span class="post-author">👤 Helian Nuits</span>
