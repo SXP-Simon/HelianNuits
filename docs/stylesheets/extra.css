@@ -508,20 +508,117 @@
 } */
 
 /* ===== 列表样式 ===== */
+.md-typeset ul,
+.md-typeset ol {
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+
 .md-typeset ul li,
 .md-typeset ol li {
   margin: 0.5rem 0;
   padding-left: 0.5rem;
   position: relative;
+  line-height: 1.6;
 }
 
+/* 移除默认的列表标记 */
 .md-typeset ul li::before {
-  content: '🌻';
-  position: absolute;
-  left: -1.5rem;
+  content: none;
+}
+
+/* 自定义有序列表样式 */
+.md-typeset ol {
+  list-style: none;
+  counter-reset: item;
+}
+
+.md-typeset ol > li {
+  counter-increment: item;
+  display: flex;
+  align-items: baseline;
+  margin: 0.8rem 0;
+}
+
+.md-typeset ol > li::before {
+  content: counter(item) ".";
+  font-weight: 700;
   color: var(--primary-color);
-  font-size: 0.8rem;
-  opacity: 0.7;
+  margin-right: 0.8rem;
+  font-size: 1rem;
+}
+
+/* 自定义无序列表样式 */
+.md-typeset ul {
+  list-style: none;
+}
+
+.md-typeset ul > li {
+  display: flex;
+  align-items: baseline;
+  margin: 0.5rem 0;
+}
+
+.md-typeset ul > li::before {
+  content: "•";
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-right: 0.8rem;
+}
+
+/* 嵌套列表样式 */
+.md-typeset ul ul,
+.md-typeset ul ol,
+.md-typeset ol ul,
+.md-typeset ol ol {
+  margin: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.md-typeset ul ul > li::before {
+  content: "◦";
+  color: var(--secondary-color);
+}
+
+.md-typeset ul ul ul > li::before {
+  content: "▪";
+  color: var(--accent-color);
+}
+
+/* 列表项内容样式 */
+.md-typeset li p {
+  margin: 0;
+  display: inline;
+}
+
+.md-typeset li code {
+  background: rgba(255, 140, 0, 0.1);
+  color: var(--primary-color);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* 暗色模式适配 */
+[data-md-color-scheme="slate"] .md-typeset li code {
+  background: rgba(255, 140, 0, 0.15);
+  color: var(--accent-color);
+}
+
+/* 列表项悬停效果 */
+.md-typeset li:hover {
+  transform: translateX(4px);
+  transition: transform 0.2s ease;
+}
+
+/* 列表项内的加粗文本 */
+.md-typeset li strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-typeset li strong {
+  color: var(--accent-color);
 }
 
 /* ===== 分割线样式 ===== */
