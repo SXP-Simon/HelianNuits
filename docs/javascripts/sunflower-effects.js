@@ -3,7 +3,8 @@
 // 全局状态管理
 const pageState = {
     decorationsInitialized: false,
-    contentRestored: false
+    contentRestored: false,
+    isNavigating: false
 };
 
 // 清理装饰元素
@@ -130,19 +131,22 @@ function initializePageEffects(isPageRestore = false) {
 // 监听页面内容变化
 function observeContentChanges() {
     const observer = new MutationObserver((mutations) => {
-        for (const mutation of mutations) {
-            if (mutation.type === 'childList') {
-                const hasNewContent = Array.from(mutation.addedNodes).some(node => 
-                    node.classList && (
-                        node.classList.contains('md-content') ||
-                        node.classList.contains('md-main__inner')
-                    )
-                );
-                
-                if (hasNewContent) {
-                    pageState.contentRestored = true;
-                    initializePageEffects(true);
-                    break;
+        if (pageState.isNavigating) {
+            for (const mutation of mutations) {
+                if (mutation.type === 'childList') {
+                    const hasNewContent = Array.from(mutation.addedNodes).some(node => 
+                        node.nodeType === 1 && ( // 只检查元素节点
+                            node.classList?.contains('md-content') ||
+                            node.classList?.contains('md-main__inner') ||
+                            node.querySelector?.('.md-content, .md-main__inner')
+                        )
+                    );
+                    
+                    if (hasNewContent) {
+                        pageState.contentRestored = true;
+                        initializePageEffects(true);
+                        break;
+                    }
                 }
             }
         }
@@ -150,7 +154,9 @@ function observeContentChanges() {
     
     observer.observe(document.body, {
         childList: true,
-        subtree: true
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class']
     });
     
     return observer;
@@ -170,22 +176,46 @@ document.addEventListener('DOMContentLoaded', () => {
 // Material for MkDocs 的页面切换事件
 document.addEventListener('DOMContentSwitch', () => {
     pageState.contentRestored = false;
+    pageState.isNavigating = true;
+
+    // 立即尝试初始化一次
+    initializePageEffects();
+
+    // 如果内容还没恢复，等待一段时间后重试
     setTimeout(() => {
+        pageState.isNavigating = false;
         if (!pageState.contentRestored) {
             initializePageEffects();
         }
-    }, 50);
+    }, 100);
 });
 
 // 处理浏览器后退/前进
 window.addEventListener('popstate', () => {
     pageState.contentRestored = false;
-    // 等待内容恢复
+    pageState.isNavigating = true;
+
+    // 立即尝试初始化一次
+    initializePageEffects(true);
+
+    // 设置多个检查点以确保内容已更新
+    const checkPoints = [0, 50, 100, 200];
+    
+    checkPoints.forEach(delay => {
+        setTimeout(() => {
+            if (!pageState.contentRestored) {
+                initializePageEffects(true);
+            }
+        }, delay);
+    });
+
+    // 最终检查点
     setTimeout(() => {
+        pageState.isNavigating = false;
         if (!pageState.contentRestored) {
             initializePageEffects(true);
         }
-    }, 50);
+    }, 500);
 });
 
 // 确保页面可见性变化时重新检查装饰元素
