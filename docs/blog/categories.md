@@ -17,6 +17,21 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
+    <a href="/HelianNuits/blog/posts/JYYOS-05-进程管理API/">JYYOS-05 | 进程API总结</a>
+  </h4>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月14日</span>
+    <span class="tag-list">🏷️ 操作系统, 进程, JYYOS</span>
+  </div>
+  <div class="post-excerpt">
+    这部分内容揭示了 UNIX 进程管理的核心逻辑
+  </div>
+</div>
+</div>
+
+<div class="category-post-card" markdown>
+<div class="post-info">
+  <h4 class="post-title">
     <a href="/HelianNuits/blog/posts/JYYOS-01-AI时代下需要的视野/">JYYOS-01 | 【AI总结】AI时代下需要的视野</a>
   </h4>
   <div class="post-meta">
@@ -67,6 +82,21 @@ description: 按分类浏览的文章列表
 
 <div class="category-posts" markdown>
 
+
+<div class="category-post-card" markdown>
+<div class="post-info">
+  <h4 class="post-title">
+    <a href="/HelianNuits/blog/posts/【近月少女的礼仪2】在挚爱之人的衣服里缝入自己的骄傲/">近月少女的礼仪2｜与才华妥协，与自我和解</a>
+  </h4>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月14日</span>
+    <span class="tag-list">🏷️ 感悟, 杂谈</span>
+  </div>
+  <div class="post-excerpt">
+    “父亲大人，母亲大人，我不过是一介凡夫俗子。” ——这是一个自大狂妄的小孩认识真正的自己的故事。
+  </div>
+</div>
+</div>
 
 <div class="category-post-card" markdown>
 <div class="post-info">
@@ -246,8 +276,8 @@ description: 按分类浏览的文章列表
 
 ## 📊 分类统计
 
-- **OS**: 3 篇
-- **动漫游戏**: 3 篇
+- **OS**: 4 篇
+- **动漫游戏**: 4 篇
 - **技术分享**: 3 篇
 - **杂谈**: 4 篇
 

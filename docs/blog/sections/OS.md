@@ -12,6 +12,26 @@ section_key: OS
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
+    <a href="/HelianNuits/blog/posts/JYYOS-05-进程管理API/">JYYOS-05 | 进程API总结</a>
+  </h3>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月14日</span>
+    <span class="category-tag">OS</span>
+    <span class="tag-list">🏷️ 操作系统, 进程, JYYOS</span>
+  </div>
+</div>
+<div class="post-excerpt">
+  这部分内容揭示了 UNIX 进程管理的核心逻辑
+</div>
+<div class="post-footer">
+  <span class="post-author">👤 Helian Nuits</span>
+  <a href="/HelianNuits/blog/posts/JYYOS-05-进程管理API/" class="read-more">阅读全文 →</a>
+</div>
+</div>
+
+<div class="post-card" markdown>
+<div class="post-header">
+  <h3 class="post-title">
     <a href="/HelianNuits/blog/posts/JYYOS-01-AI时代下需要的视野/">JYYOS-01 | 【AI总结】AI时代下需要的视野</a>
   </h3>
   <div class="post-meta">
@@ -78,8 +98,8 @@ section_key: OS
 
 ## 📊 分区统计
 
-- **文章总数**: 3 篇
-- **最近更新**: 2025年07月13日
-- **主要标签**: 操作系统, AI时代, JYYOS, OSTEP, 综述
+- **文章总数**: 4 篇
+- **最近更新**: 2025年07月14日
+- **主要标签**: 操作系统, JYYOS, 进程, AI时代, OSTEP
 
 </div>

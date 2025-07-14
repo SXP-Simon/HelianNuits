@@ -17,6 +17,14 @@ description: 按时间归档的博客文章
 
 
 <div class="archive-post" markdown>
+- **07月14日** - [JYYOS-05 | 进程API总结](/HelianNuits/blog/posts/JYYOS-05-进程管理API/) <span class="category-tag">OS</span>
+</div>
+
+<div class="archive-post" markdown>
+- **07月14日** - [近月少女的礼仪2｜与才华妥协，与自我和解](/HelianNuits/blog/posts/【近月少女的礼仪2】在挚爱之人的衣服里缝入自己的骄傲/) <span class="category-tag">动漫游戏</span>
+</div>
+
+<div class="archive-post" markdown>
 - **07月13日** - [JYYOS-01 | 【AI总结】AI时代下需要的视野](/HelianNuits/blog/posts/JYYOS-01-AI时代下需要的视野/) <span class="category-tag">OS</span>
 </div>
 
@@ -91,8 +99,8 @@ description: 按时间归档的博客文章
 
 ## 📊 统计信息
 
-- **总文章数**: 13 篇
+- **总文章数**: 15 篇
 - **最早文章**: 2025年01月18日
-- **最新文章**: 2025年07月13日
+- **最新文章**: 2025年07月14日
 
 </div>

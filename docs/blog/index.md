@@ -11,6 +11,44 @@ description: 最新博客文章列表
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
+    <a href="/HelianNuits/blog/posts/JYYOS-05-进程管理API/">JYYOS-05 | 进程API总结</a>
+  </h3>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月14日</span>
+    <span class="category-tag">OS</span>
+  </div>
+</div>
+<div class="post-excerpt">
+  这部分内容揭示了 UNIX 进程管理的核心逻辑
+</div>
+<div class="post-footer">
+  <span class="post-author">👤 Helian Nuits</span>
+  <a href="/HelianNuits/blog/posts/JYYOS-05-进程管理API/" class="read-more">阅读全文 →</a>
+</div>
+</div>
+
+<div class="post-card" markdown>
+<div class="post-header">
+  <h3 class="post-title">
+    <a href="/HelianNuits/blog/posts/【近月少女的礼仪2】在挚爱之人的衣服里缝入自己的骄傲/">近月少女的礼仪2｜与才华妥协，与自我和解</a>
+  </h3>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月14日</span>
+    <span class="category-tag">动漫游戏</span>
+  </div>
+</div>
+<div class="post-excerpt">
+  “父亲大人，母亲大人，我不过是一介凡夫俗子。” ——这是一个自大狂妄的小孩认识真正的自己的故事。
+</div>
+<div class="post-footer">
+  <span class="post-author">👤 Helian Nuits</span>
+  <a href="/HelianNuits/blog/posts/【近月少女的礼仪2】在挚爱之人的衣服里缝入自己的骄傲/" class="read-more">阅读全文 →</a>
+</div>
+</div>
+
+<div class="post-card" markdown>
+<div class="post-header">
+  <h3 class="post-title">
     <a href="/HelianNuits/blog/posts/JYYOS-01-AI时代下需要的视野/">JYYOS-01 | 【AI总结】AI时代下需要的视野</a>
   </h3>
   <div class="post-meta">
@@ -157,44 +195,6 @@ description: 最新博客文章列表
 <div class="post-footer">
   <span class="post-author">👤 Helian Nuits</span>
   <a href="/HelianNuits/blog/posts/ncu-inn-stack/" class="read-more">阅读全文 →</a>
-</div>
-</div>
-
-<div class="post-card" markdown>
-<div class="post-header">
-  <h3 class="post-title">
-    <a href="/HelianNuits/blog/posts/【Narcissus】一段灿烂的故事/">Narcissu|一段灿烂的故事，一个冬日的回忆</a>
-  </h3>
-  <div class="post-meta">
-    <span class="post-date">📅 2025年06月30日</span>
-    <span class="category-tag">动漫游戏</span>
-  </div>
-</div>
-<div class="post-excerpt">
-  暂无描述
-</div>
-<div class="post-footer">
-  <span class="post-author">👤 Helian Nuits</span>
-  <a href="/HelianNuits/blog/posts/【Narcissus】一段灿烂的故事/" class="read-more">阅读全文 →</a>
-</div>
-</div>
-
-<div class="post-card" markdown>
-<div class="post-header">
-  <h3 class="post-title">
-    <a href="/HelianNuits/blog/posts/ContextMenuForWindows11/">【小工具】ContextMenuForWindows11安装</a>
-  </h3>
-  <div class="post-meta">
-    <span class="post-date">📅 2025年06月29日</span>
-    <span class="category-tag">技术分享</span>
-  </div>
-</div>
-<div class="post-excerpt">
-  暂无描述
-</div>
-<div class="post-footer">
-  <span class="post-author">👤 Helian Nuits</span>
-  <a href="/HelianNuits/blog/posts/ContextMenuForWindows11/" class="read-more">阅读全文 →</a>
 </div>
 </div>
 

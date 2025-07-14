@@ -19,7 +19,7 @@ hooks:
 theme:
   name: material
   language: zh
-  logo: assets/HelianNuits.jpg
+  logo: assets/HelianNuits.png
   favicon: assets/HelianNuits.jpg
   features:
   - announce.dismiss
@@ -125,11 +125,13 @@ nav:
     - 25暑假初期学习规划: blog/posts/25暑假初期学习规划.md
     - ContextMenuForWindows11: blog/posts/ContextMenuForWindows11.md
     - JYYOS-01-AI时代下需要的视野: blog/posts/JYYOS-01-AI时代下需要的视野.md
+    - JYYOS-05-进程管理API: blog/posts/JYYOS-05-进程管理API.md
     - OSTEP-01-操作系统综述: blog/posts/OSTEP-01-操作系统综述.md
     - jyyos-ostep-startup: blog/posts/jyyos-ostep-startup.md
     - ncu-inn-stack: blog/posts/ncu-inn-stack.md
     - sample_cn: blog/posts/sample_cn.md
     - 【Narcissus】一段灿烂的故事: blog/posts/【Narcissus】一段灿烂的故事.md
+    - 【近月少女的礼仪2】在挚爱之人的衣服里缝入自己的骄傲: blog/posts/【近月少女的礼仪2】在挚爱之人的衣服里缝入自己的骄傲.md
     - 四月是你的谎言: blog/posts/四月是你的谎言.md
     - 天空充满了不安的言语: blog/posts/天空充满了不安的言语.md
     - 科目一启动: blog/posts/科目一启动.md
