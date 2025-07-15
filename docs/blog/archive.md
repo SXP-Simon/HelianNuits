@@ -17,6 +17,10 @@ description: 按时间归档的博客文章
 
 
 <div class="archive-post" markdown>
+- **07月15日** - [这网页这么全是红色](/HelianNuits/blog/posts/这网页这么全是红色/) <span class="category-tag">杂谈</span>
+</div>
+
+<div class="archive-post" markdown>
 - **07月14日** - [JYYOS-05 | 进程API总结](/HelianNuits/blog/posts/JYYOS-05-进程管理API/) <span class="category-tag">OS</span>
 </div>
 
@@ -99,8 +103,8 @@ description: 按时间归档的博客文章
 
 ## 📊 统计信息
 
-- **总文章数**: 15 篇
+- **总文章数**: 16 篇
 - **最早文章**: 2025年01月18日
-- **最新文章**: 2025年07月14日
+- **最新文章**: 2025年07月15日
 
 </div>
