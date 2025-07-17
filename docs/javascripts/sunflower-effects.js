@@ -442,3 +442,29 @@ if (typeof initializePageEffects === 'function') {
         setupBackToTopButton();
     };
 } 
+
+// 修复移动端回退后导航栏未加载的问题
+function fixMobileNavOnRestore() {
+    // 检查移动端导航栏元素
+    const navToggle = document.querySelector('.md-nav__toggle');
+    const navDrawer = document.querySelector('.md-nav__drawer');
+    // 如果导航栏元素不存在或不可见，强制刷新页面或重新初始化
+    if (!navToggle || !navDrawer || navDrawer.offsetWidth === 0) {
+        // 触发 Material for MkDocs 的导航栏初始化事件
+        if (typeof window.dispatchEvent === 'function') {
+            window.dispatchEvent(new Event('DOMContentLoaded'));
+        }
+        // 兜底：强制刷新（可选，注释掉以避免全页刷新）
+        // location.reload();
+    }
+}
+
+// 在 popstate 和 pageshow 恢复时调用
+window.addEventListener('popstate', () => {
+    setTimeout(fixMobileNavOnRestore, 100);
+});
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        setTimeout(fixMobileNavOnRestore, 100);
+    }
+}); 
