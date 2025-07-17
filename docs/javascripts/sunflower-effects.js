@@ -445,17 +445,11 @@ if (typeof initializePageEffects === 'function') {
 
 // 修复移动端回退后导航栏未加载的问题
 function fixMobileNavOnRestore() {
-    // 检查移动端导航栏元素
     const navToggle = document.querySelector('.md-nav__toggle');
     const navDrawer = document.querySelector('.md-nav__drawer');
-    // 如果导航栏元素不存在或不可见，强制刷新页面或重新初始化
+    // 如果导航栏元素不存在或不可见，强制刷新页面
     if (!navToggle || !navDrawer || navDrawer.offsetWidth === 0) {
-        // 触发 Material for MkDocs 的导航栏初始化事件
-        if (typeof window.dispatchEvent === 'function') {
-            window.dispatchEvent(new Event('DOMContentLoaded'));
-        }
-        // 兜底：强制刷新（可选，注释掉以避免全页刷新）
-        // location.reload();
+        location.reload();
     }
 }
 
