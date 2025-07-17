@@ -11,7 +11,7 @@ description: 最新博客文章列表
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
-    <a href="/HelianNuits/blog/posts/这网页这么全是红色/">这网页这么全是红色</a>
+    <a href="/HelianNuits/blog/posts/这网页这么全是红色/">这网页怎么全是红色</a>
   </h3>
   <div class="post-meta">
     <span class="post-date">📅 2025年07月15日</span>
@@ -19,7 +19,7 @@ description: 最新博客文章列表
   </div>
 </div>
 <div class="post-excerpt">
-  这网页这么全是红色，我杀 big 来了
+  这网页怎么全是红色，我杀 big 来了
 </div>
 <div class="post-footer">
   <span class="post-author">👤 Helian Nuits</span>

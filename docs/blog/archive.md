@@ -17,7 +17,7 @@ description: 按时间归档的博客文章
 
 
 <div class="archive-post" markdown>
-- **07月15日** - [这网页这么全是红色](/HelianNuits/blog/posts/这网页这么全是红色/) <span class="category-tag">杂谈</span>
+- **07月15日** - [这网页怎么全是红色](/HelianNuits/blog/posts/这网页这么全是红色/) <span class="category-tag">杂谈</span>
 </div>
 
 <div class="archive-post" markdown>

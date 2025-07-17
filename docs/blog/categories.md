@@ -209,14 +209,14 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
-    <a href="/HelianNuits/blog/posts/这网页这么全是红色/">这网页这么全是红色</a>
+    <a href="/HelianNuits/blog/posts/这网页这么全是红色/">这网页怎么全是红色</a>
   </h4>
   <div class="post-meta">
     <span class="post-date">📅 2025年07月15日</span>
     <span class="tag-list">🏷️ 杂谈</span>
   </div>
   <div class="post-excerpt">
-    这网页这么全是红色，我杀 big 来了
+    这网页怎么全是红色，我杀 big 来了
   </div>
 </div>
 </div>

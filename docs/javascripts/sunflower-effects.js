@@ -218,6 +218,14 @@ window.addEventListener('popstate', () => {
     }, 500);
 });
 
+// 兼容移动端手势滑动返回（bfcache 恢复）
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        // 页面是从 bfcache 恢复的（如手势滑动返回）
+        initializePageEffects(true);
+    }
+});
+
 // 确保页面可见性变化时重新检查装饰元素
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && !pageState.decorationsInitialized) {
