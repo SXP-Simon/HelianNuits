@@ -398,3 +398,47 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style); 
+
+// 浮动回到顶部按钮逻辑
+function setupBackToTopButton() {
+    // 如果已存在则不重复添加
+    if (document.getElementById('backToTop')) return;
+
+    // 创建按钮
+    const btn = document.createElement('button');
+    btn.id = 'backToTop';
+    btn.className = 'sunflower-button';
+    btn.title = '回到顶部';
+    btn.style.display = 'none';
+    btn.style.position = 'fixed';
+    btn.style.right = '40px';
+    btn.style.bottom = '40px';
+    btn.style.zIndex = '9999';
+    btn.innerHTML = '<svg style="vertical-align:middle;margin-right:6px;" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>回到顶部';
+
+    document.body.appendChild(btn);
+
+    // 显示/隐藏按钮
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 200) {
+            btn.style.display = 'block';
+        } else {
+            btn.style.display = 'none';
+        }
+    });
+
+    // 点击滚动到顶部
+    btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', setupBackToTopButton);
+// 保证SPA切换后也能正常工作
+if (typeof initializePageEffects === 'function') {
+    const oldInit = initializePageEffects;
+    initializePageEffects = function(...args) {
+        oldInit.apply(this, args);
+        setupBackToTopButton();
+    };
+} 

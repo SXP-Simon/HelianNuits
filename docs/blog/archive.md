@@ -17,6 +17,10 @@ description: 按时间归档的博客文章
 
 
 <div class="archive-post" markdown>
+- **07月17日** - [25 暑假沉淀计划](/HelianNuits/blog/posts/25暑假沉淀计划/) <span class="category-tag">杂谈</span>
+</div>
+
+<div class="archive-post" markdown>
 - **07月15日** - [这网页怎么全是红色](/HelianNuits/blog/posts/这网页这么全是红色/) <span class="category-tag">杂谈</span>
 </div>
 
@@ -103,8 +107,8 @@ description: 按时间归档的博客文章
 
 ## 📊 统计信息
 
-- **总文章数**: 16 篇
+- **总文章数**: 17 篇
 - **最早文章**: 2025年01月18日
-- **最新文章**: 2025年07月15日
+- **最新文章**: 2025年07月17日
 
 </div>

@@ -1048,15 +1048,8 @@
   margin: 1rem 0;
 }
 
-.archive-stats,
-.category-stats {
-  background: var(--sunflower-gradient);
-  color: white;
-  padding: 1rem 1.5rem;
-  border-radius: var(--border-radius);
-  margin: 1rem 0;
-  text-align: center;
-  box-shadow: var(--shadow);
+.archive-stats, .archive-info, .stats-card, .section-info {
+  text-align: left !important;
 }
 
 .archive-stats h3,

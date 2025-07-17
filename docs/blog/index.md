@@ -11,6 +11,25 @@ description: 最新博客文章列表
 <div class="post-card" markdown>
 <div class="post-header">
   <h3 class="post-title">
+    <a href="/HelianNuits/blog/posts/25暑假沉淀计划/">25 暑假沉淀计划</a>
+  </h3>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月17日</span>
+    <span class="category-tag">杂谈</span>
+  </div>
+</div>
+<div class="post-excerpt">
+  被可恶的世界撕裂了时间，放下幻想在时空裂隙中苟延残喘
+</div>
+<div class="post-footer">
+  <span class="post-author">👤 Helian Nuits</span>
+  <a href="/HelianNuits/blog/posts/25暑假沉淀计划/" class="read-more">阅读全文 →</a>
+</div>
+</div>
+
+<div class="post-card" markdown>
+<div class="post-header">
+  <h3 class="post-title">
     <a href="/HelianNuits/blog/posts/这网页这么全是红色/">这网页怎么全是红色</a>
   </h3>
   <div class="post-meta">
@@ -176,25 +195,6 @@ description: 最新博客文章列表
 <div class="post-footer">
   <span class="post-author">👤 Helian Nuits</span>
   <a href="/HelianNuits/blog/posts/竭尽全力成为矢志不渝之愚者/" class="read-more">阅读全文 →</a>
-</div>
-</div>
-
-<div class="post-card" markdown>
-<div class="post-header">
-  <h3 class="post-title">
-    <a href="/HelianNuits/blog/posts/25暑假初期学习规划/">25 暑假初期学习规划</a>
-  </h3>
-  <div class="post-meta">
-    <span class="post-date">📅 2025年07月04日</span>
-    <span class="category-tag">杂谈</span>
-  </div>
-</div>
-<div class="post-excerpt">
-  可能学不动了
-</div>
-<div class="post-footer">
-  <span class="post-author">👤 Helian Nuits</span>
-  <a href="/HelianNuits/blog/posts/25暑假初期学习规划/" class="read-more">阅读全文 →</a>
 </div>
 </div>
 

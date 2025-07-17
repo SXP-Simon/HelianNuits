@@ -547,3 +547,37 @@
 [data-md-color-scheme="slate"] .md-nav__link:hover {
   color: #ffd700 !important;
 } 
+
+#backToTop {
+  position: fixed !important;
+  right: 40px !important;
+  bottom: 40px !important;
+  z-index: 9999 !important;
+  display: none;
+  background: var(--sunflower-gradient, #ffb300);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#backToTop:hover {
+  box-shadow: 0 8px 25px rgba(255, 140, 0, 0.4);
+  transform: translateY(-3px);
+}
+@media (max-width: 480px) {
+  #backToTop {
+    right: 16px !important;
+    bottom: 16px !important;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+.md-sidebar,
+.md-sidebar__inner {
+  background: transparent !important;
+  box-shadow: none !important;
+} 

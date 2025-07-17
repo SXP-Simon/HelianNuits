@@ -209,6 +209,21 @@ description: 按分类浏览的文章列表
 <div class="category-post-card" markdown>
 <div class="post-info">
   <h4 class="post-title">
+    <a href="/HelianNuits/blog/posts/25暑假沉淀计划/">25 暑假沉淀计划</a>
+  </h4>
+  <div class="post-meta">
+    <span class="post-date">📅 2025年07月17日</span>
+    <span class="tag-list">🏷️ 杂谈, 日常</span>
+  </div>
+  <div class="post-excerpt">
+    被可恶的世界撕裂了时间，放下幻想在时空裂隙中苟延残喘
+  </div>
+</div>
+</div>
+
+<div class="category-post-card" markdown>
+<div class="post-info">
+  <h4 class="post-title">
     <a href="/HelianNuits/blog/posts/这网页这么全是红色/">这网页怎么全是红色</a>
   </h4>
   <div class="post-meta">
@@ -294,6 +309,6 @@ description: 按分类浏览的文章列表
 - **OS**: 4 篇
 - **动漫游戏**: 4 篇
 - **技术分享**: 3 篇
-- **杂谈**: 5 篇
+- **杂谈**: 6 篇
 
 </div>
